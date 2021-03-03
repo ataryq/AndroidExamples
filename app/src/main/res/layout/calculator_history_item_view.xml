@@ -2,8 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_height="60dp"
+    android:background="@drawable/small_rect"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp">
 
     <TextView
         android:id="@+id/percentTV"
@@ -12,7 +16,8 @@
         android:layout_weight="1"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="16sp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/startSumTV"
@@ -21,7 +26,8 @@
         android:layout_weight="1"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="16sp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/periodsTV"
@@ -30,15 +36,16 @@
         android:layout_weight="1"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="16sp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/incomeTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="16sp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 </LinearLayout>

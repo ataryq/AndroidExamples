@@ -6,14 +6,16 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.melearning.CalculationHistoryDb.CalculationInfo
 
 interface OnClickListener {
-    fun click(info:CalculationInfo?)
+    fun click(info: CalculationInfo?)
 }
 
 class RecycleItemViewHolder(private val view: View,
                             var listener:OnClickListener? = null,
-                            var mInfo:CalculationInfo? = null): RecyclerView.ViewHolder(view) {
+                            var mInfo: CalculationInfo? = null)
+                                : RecyclerView.ViewHolder(view) {
     var mListener = listener
 
     init {
@@ -23,40 +25,65 @@ class RecycleItemViewHolder(private val view: View,
     }
 }
 
-class RecycleViewAdapter(listener:OnClickListener?): RecyclerView.Adapter<RecycleItemViewHolder>() {
-    var mClickListener: OnClickListener? = listener
+class RecycleViewAdapter(listener:OnClickListener?):
+    RecyclerView.Adapter<RecycleItemViewHolder>(),
+    Utils.Callback {
 
-    var data = ArrayList<CalculationInfo>()
+    private var mClickListener: OnClickListener? = listener
+    var mDataProvider: DataProvider? = null
+
+    var mData = ArrayList<CalculationInfo>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
+    override fun called() {
+        fillData()
+    }
+
+    fun setDataProvider(dataProvider: DataProvider) {
+        mDataProvider = dataProvider
+        mDataProvider?.setDataChangedCallback(this)
+        fillData()
+    }
+
+    private fun fillData() {
+        mDataProvider?.getAll(object : LoadDataListener {
+            override fun getData(data: List<CalculationInfo>) {
+                if(data.isNotEmpty())
+                    mData = ArrayList(data)
+                println("got data")
+                notifyDataSetChanged()
+            }
+        })
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater
-            .inflate(R.layout.recycle_item_view, parent, false)
+            .inflate(R.layout.calculator_history_item_view, parent, false)
 
         return RecycleItemViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        println("size: ${data.size}")
-        return data.size
+        //println("size: ${mData.size}")
+        return mData.size
     }
 
     override fun onBindViewHolder(holder: RecycleItemViewHolder, position: Int) {
-        if(position >= data.size)
+        if(position >= mData.size)
             return
 
-        var info = data[position]
+        var info = mData[position]
         holder.mInfo = info
         holder.mListener = mClickListener
         var recyclerView = holder.itemView.findViewById<LinearLayout>(R.id.container)
 
-        recyclerView.findViewById<TextView>(R.id.percentTV).text = info.mPercent.toString()
-        recyclerView.findViewById<TextView>(R.id.startSumTV).text = info.mInitial.toString()
-        recyclerView.findViewById<TextView>(R.id.periodsTV).text = info.mPeriods.toString()
-        recyclerView.findViewById<TextView>(R.id.incomeTV).text = info.mIncome.toString()
+        recyclerView.findViewById<TextView>(R.id.percentTV).text = info.percent.toString()
+        recyclerView.findViewById<TextView>(R.id.startSumTV).text = info.initial.toString()
+        recyclerView.findViewById<TextView>(R.id.periodsTV).text = info.periods.toString()
+        recyclerView.findViewById<TextView>(R.id.incomeTV).text = info.income.toString()
     }
 }
