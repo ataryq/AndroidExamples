@@ -7,3 +7,5 @@ The desing was implemented via Flatter and was made according to Matreail Design
 
 Used technologies: Kotlin, Room, RecyleView, BottomNavigationView.
 
+![history](screenshots/history.jpg)
+![main_screen](screenshots/main_screen.jpg)
