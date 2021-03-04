@@ -8,7 +8,7 @@ import com.example.melearning.CalculationHistoryDb.CalculationInfo
 import kotlinx.android.synthetic.main.clear_table_dialog.*
 import kotlinx.android.synthetic.main.percent_calculation_fragment.*
 
-class PercentCalculationFragment:
+class CalculationFragment:
     Fragment(R.layout.percent_calculation_fragment),
     OnClickListener,
     Utils.Callback {

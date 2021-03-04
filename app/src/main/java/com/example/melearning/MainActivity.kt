@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add<PercentCalculationFragment>(R.id.fragment_container_view)
+                add<CalculationFragment>(R.id.fragment_container_view)
             }
         }
     }
