@@ -2,6 +2,15 @@ package com.example.melearning
 
 import android.content.Context
 import androidx.room.*
+import dagger.*
+import javax.inject.Singleton
+
+@Module
+class CalculationDbModule {
+    @Provides
+    @Singleton
+    fun provideCalculationHistoryDb(context: Context): DataProvider = CalculationHistoryDb(context)
+}
 
 interface DataProvider {
     fun getAll(listener: LoadDataListener)
@@ -23,10 +32,13 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
 
     private var mDb:CalculationHistoryDatabase
     fun getDatabase(): CalculationHistoryDatabase { return mDb }
+
     private var mDataChangedCallback: Utils.Callback? = null
 
     init {
-        mDb = Room.databaseBuilder(context, CalculationHistoryDatabase::class.java, dbName).build()
+        mDb = Room.databaseBuilder(context,
+            CalculationHistoryDatabase::class.java,
+            dbName).build()
     }
 
     private fun getDatabaseHandler(): CalculationHistoryDao {
@@ -57,7 +69,7 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
         fun clearTable()
     }
 
-    @Database(entities = [CalculationInfo::class], version = 1)
+    @Database(entities = [CalculationInfo::class], version = 1, exportSchema = false)
     abstract class CalculationHistoryDatabase : RoomDatabase() {
         abstract fun historyDao(): CalculationHistoryDao
     }

@@ -7,16 +7,23 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.melearning.CalculationHistoryDb.CalculationInfo
+import dagger.*
+
+@Module
+class RecycleViewAdapterModule {
+    @ActivityScope
+    @Provides
+    fun provideRecycleViewAdapter(db: DataProvider) = RecycleViewAdapter(db)
+}
 
 interface OnClickListener {
     fun click(info: CalculationInfo?)
 }
 
 class RecycleItemViewHolder(private val view: View,
-                            var listener:OnClickListener? = null,
+                            var mListener:OnClickListener? = null,
                             var mInfo: CalculationInfo? = null)
                                 : RecyclerView.ViewHolder(view) {
-    var mListener = listener
 
     init {
         view.setOnClickListener{
@@ -25,31 +32,35 @@ class RecycleItemViewHolder(private val view: View,
     }
 }
 
-class RecycleViewAdapter(listener:OnClickListener?):
+class RecycleViewAdapter(db: DataProvider):
     RecyclerView.Adapter<RecycleItemViewHolder>(),
     Utils.Callback {
 
-    private var mClickListener: OnClickListener? = listener
-    var mDataProvider: DataProvider? = null
+    private var mDataProvider: DataProvider = db
+    private var mClickListener: OnClickListener? = null
 
-    var mData = ArrayList<CalculationInfo>()
+    private var mData = ArrayList<CalculationInfo>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
+    init {
+        println("set mDataProvider")
+        mDataProvider.setDataChangedCallback(this)
+        fillData()
+    }
+
+    fun setClickListener(clickListener: OnClickListener) {
+        mClickListener = clickListener
+    }
+
     override fun called() {
         fillData()
     }
 
-    fun setDataProvider(dataProvider: DataProvider) {
-        mDataProvider = dataProvider
-        mDataProvider?.setDataChangedCallback(this)
-        fillData()
-    }
-
     private fun fillData() {
-        mDataProvider?.getAll(object : LoadDataListener {
+        mDataProvider.getAll(object : LoadDataListener {
             override fun getData(data: List<CalculationInfo>) {
                 if(data.isNotEmpty())
                     mData = ArrayList(data)

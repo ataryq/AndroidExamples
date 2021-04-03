@@ -3,13 +3,18 @@ package com.example.melearning
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+import javax.inject.Inject
 
 class Utils {
+
     interface Callback {
         fun called()
     }
 
     companion object {
+        lateinit var mActivity: AppCompatActivity
+
         fun parseStringToNumber(text: EditText): Double {
             var percentText = text.text.toString()
             var retValue = 0.0
@@ -40,7 +45,7 @@ class Utils {
         }
 
         fun runInUiThread(runnable: () -> Unit) {
-            MainActivity.instance?.runOnUiThread(runnable)
+            mActivity.runOnUiThread(runnable)
         }
     }
 }

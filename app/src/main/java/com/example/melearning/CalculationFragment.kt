@@ -3,23 +3,26 @@ package com.example.melearning
 import android.app.AlertDialog
 import android.os.Bundle
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.melearning.CalculationHistoryDb.CalculationInfo
 import kotlinx.android.synthetic.main.clear_table_dialog.*
 import kotlinx.android.synthetic.main.percent_calculation_fragment.*
+import javax.inject.Inject
 
 class CalculationFragment:
     Fragment(R.layout.percent_calculation_fragment),
     OnClickListener,
     Utils.Callback {
 
-    private lateinit var mDb: CalculationHistoryDb
+    @Inject lateinit var mDb: DataProvider
+    @Inject lateinit var mActivity: AppCompatActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         if(savedInstanceState == null) {
-            mDb = MainActivity.getCachedDb(requireContext())
+            ActivityDaggerComponent.instance.inject(this)
         }
     }
 
@@ -55,7 +58,7 @@ class CalculationFragment:
         bottom_app_bar.setNavigationOnClickListener {
             println("onOptionsItemSelected")
             val bottomNavDrawerFragment = BottomNavigationFragment(this)
-            val fragManager = MainActivity.instance?.supportFragmentManager
+            val fragManager = mActivity.supportFragmentManager
             if(fragManager != null)
                 bottomNavDrawerFragment.show(fragManager, bottomNavDrawerFragment.tag)
         }
