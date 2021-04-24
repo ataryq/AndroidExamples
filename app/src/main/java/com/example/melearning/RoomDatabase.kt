@@ -1,44 +1,41 @@
 package com.example.melearning
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.room.*
-import dagger.*
+import dagger.Module
+import dagger.Provides
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Singleton
 
-@Module
-class CalculationDbModule {
-    @Provides
-    @Singleton
-    fun provideCalculationHistoryDb(context: Context): DataProvider = CalculationHistoryDb(context)
-}
-
 interface DataProvider {
-    fun getAll(listener: LoadDataListener)
+    fun getAll(): LiveData<List<CalculationHistoryDb.CalculationInfo>>
     fun insertAll(vararg histories: CalculationHistoryDb.CalculationInfo)
     fun delete(history: CalculationHistoryDb.CalculationInfo)
     fun clear()
-    fun setDataChangedCallback(callback: Utils.Callback)
 }
 
-interface LoadDataListener {
-    fun getData(data:List<CalculationHistoryDb.CalculationInfo>)
-}
-
+@Module
 class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvider {
     companion object {
         const val HistoryTableName = "CalculationHistory"
         const val DbName = "PercentCalculator"
+        @Provides
+        @Singleton
+        fun createInstance(context:Context): DataProvider = CalculationHistoryDb(context)
     }
 
     private var mDb:CalculationHistoryDatabase
-    fun getDatabase(): CalculationHistoryDatabase { return mDb }
-
-    private var mDataChangedCallback: Utils.Callback? = null
+    private lateinit var mAllElements : LiveData<List<CalculationInfo>>
+    private val mCoroutineScope: CoroutineScope = CoroutineScope(Dispatchers.IO)
 
     init {
         mDb = Room.databaseBuilder(context,
             CalculationHistoryDatabase::class.java,
             dbName).build()
+        updateAll()
     }
 
     private fun getDatabaseHandler(): CalculationHistoryDao {
@@ -47,17 +44,17 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
 
     @Entity(tableName = HistoryTableName)
     data class CalculationInfo(
-        @ColumnInfo(name = "percent") val percent: Double?,
-        @ColumnInfo(name = "periods") val periods: Double?,
-        @ColumnInfo(name = "initial") val initial: Double?,
-        @ColumnInfo(name = "income") val income: Double?,
+        @ColumnInfo(name = "percent") val percent: Double,
+        @ColumnInfo(name = "periods") val periods: Double,
+        @ColumnInfo(name = "initial") val initial: Double,
+        @ColumnInfo(name = "income") val income: Double,
         @PrimaryKey(autoGenerate = true) val id: Int? = null
         )
 
     @Dao
     interface CalculationHistoryDao {
         @Query("SELECT * FROM $HistoryTableName")
-        fun getAll(): List<CalculationInfo>
+        fun getAll(): LiveData<List<CalculationInfo>>
 
         @Insert
         fun insertAll(vararg histories: CalculationInfo)
@@ -74,38 +71,32 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
         abstract fun historyDao(): CalculationHistoryDao
     }
 
-    override fun getAll(listener: LoadDataListener){
-        Utils.runInThread {
-            println("getAll")
-            var data = getDatabaseHandler().getAll()
-            Utils.runInUiThread {
-                println("getAll in ui")
-                listener.getData(data)
-            }
-        }
+    override fun getAll() : LiveData<List<CalculationInfo>> {
+        return mAllElements
+    }
+
+    private fun updateAll() {
+        mAllElements = mDb.historyDao().getAll()
     }
 
     override fun insertAll(vararg histories: CalculationInfo) {
-        Utils.runInThread {
+        mCoroutineScope.launch {
             getDatabaseHandler().insertAll(*histories)
-            Utils.runInUiThread { mDataChangedCallback?.called() }
+            updateAll()
         }
     }
 
     override fun delete(history: CalculationInfo) {
-        Utils.runInThread {
+        mCoroutineScope.launch {
             getDatabaseHandler().delete(history)
-            Utils.runInUiThread { mDataChangedCallback?.called() }
+            updateAll()
         }
     }
 
     override fun clear() {
-        Utils.runInThread {
+        mCoroutineScope.launch {
             mDb.clearAllTables()
+            updateAll()
         }
-    }
-
-    override fun setDataChangedCallback(callback: Utils.Callback) {
-        mDataChangedCallback = callback
     }
 }

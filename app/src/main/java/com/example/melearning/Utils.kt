@@ -4,7 +4,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import javax.inject.Inject
 
 class Utils {
 
@@ -15,12 +14,11 @@ class Utils {
     companion object {
         lateinit var mActivity: AppCompatActivity
 
-        fun parseStringToNumber(text: EditText): Double {
-            var percentText = text.text.toString()
+        fun parseStringToNumber(text: String): Double {
+            var percentText = text
             var retValue = 0.0
             if(percentText.isEmpty())
                 return retValue
-
             try {
                 retValue = percentText.toDouble()
             }

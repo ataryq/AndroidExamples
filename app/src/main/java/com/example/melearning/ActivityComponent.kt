@@ -13,17 +13,11 @@ import javax.inject.Singleton
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 annotation class ActivityScope
 
-@Module
-class ActivityModule(private val activity: AppCompatActivity) {
-    @Provides
-    fun providerActivity() = activity
-    @Provides
-    fun providerContext(): Context = activity.applicationContext
-}
-
 @ActivityScope
-@Component(dependencies = [ApplicationComponent::class], modules = [ActivityModule::class,
-    RecycleViewAdapterModule::class])
+@Component(dependencies = [ApplicationComponent::class],
+    modules = [
+        MainActivity::class,
+        CalculationFragmentViewModelFactory::class])
 interface ActivityComponent {
     fun inject(obj: BottomNavigationFragment)
     fun inject(obj: CalculationFragment)
@@ -39,10 +33,10 @@ class ActivityDaggerComponent {
     fun inject(obj: BottomNavigationFragment) = activityComponent.inject(obj)
     fun inject(obj: CalculationFragment) = activityComponent.inject(obj)
 
-    fun build(activity: AppCompatActivity) {
+    fun build(activity: MainActivity) {
         activityComponent = DaggerActivityComponent.builder()
             .applicationComponent(ApplicationDaggerComponent.instance.applicationComponent)
-            .activityModule(ActivityModule(activity))
+            .mainActivity(activity)
             .build()
         Utils.mActivity = activity
     }

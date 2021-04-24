@@ -4,40 +4,41 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import com.example.melearning.databinding.BottomNavigationBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.bottom_navigation.*
 import javax.inject.Inject
 
-class BottomNavigationFragment(private val mClickListener: OnClickListener):
-    BottomSheetDialogFragment(),
-    OnClickListener {
+class BottomNavigationFragment(private val mEventHandler: CalculationInfoEvent):
+    BottomSheetDialogFragment(){
 
     @Inject lateinit var mAdapter: RecycleViewAdapter
-    @Inject lateinit var mDb: DataProvider
-
-    override fun onStart() {
-        super.onStart()
-
-        historyCalculations.adapter = mAdapter
-    }
+    lateinit var mBinding: BottomNavigationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if(savedInstanceState == null) {
-            ActivityDaggerComponent.instance.inject(this)
-            mAdapter.setClickListener(this)
-        }
+        ActivityDaggerComponent.instance.inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.bottom_navigation, container, false)
+        mBinding = DataBindingUtil.inflate(layoutInflater,
+            R.layout.bottom_navigation, container, false)
+        mAdapter.setEventHandler(mEventHandler)
+        mAdapter.setLifecycleOwner(viewLifecycleOwner)
+
+        return mBinding.root
     }
 
-    override fun click(info: CalculationHistoryDb.CalculationInfo?) {
-        mClickListener.click(info)
-        dismiss()
+    override fun onStart() {
+        super.onStart()
+        mBinding.historyCalculations.adapter = mAdapter
     }
+
+    override fun onPause() {
+        dismiss()
+        super.onPause()
+    }
+
 }

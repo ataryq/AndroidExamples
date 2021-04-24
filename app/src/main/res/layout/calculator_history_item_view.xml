@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="calculationInfo"
+            type="com.example.melearning.CalculationHistoryDb.CalculationInfo" />
+    </data>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -14,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView"
+        android:text="@{Double.toString(calculationInfo.percent)}"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="14sp" />
@@ -24,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView"
+        android:text="@{Double.toString(calculationInfo.initial)}"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="14sp" />
@@ -34,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView"
+        android:text="@{Double.toString(calculationInfo.periods)}"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="14sp" />
@@ -44,8 +51,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView"
+        android:text="@{Double.toString(calculationInfo.income)}"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="14sp" />
 </LinearLayout>
+</layout>

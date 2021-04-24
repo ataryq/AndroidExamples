@@ -14,7 +14,7 @@ class ApplicationModule(private val appContext: Context) {
 }
 
 @Singleton
-@Component(modules = [ApplicationModule::class, CalculationDbModule::class])
+@Component(modules = [ApplicationModule::class, CalculationHistoryDb::class])
 interface ApplicationComponent {
     fun dataProvider(): DataProvider
 }
