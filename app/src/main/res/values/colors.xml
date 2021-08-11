@@ -3,4 +3,8 @@
     <color name="colorPrimary">#313949</color>
     <color name="colorPrimaryDark">#29303E</color>
     <color name="colorAccent">#A6FFFFFF</color>
+
+    <color name="emptyColor">#00FFFFFF</color>
+    <color name="colorButtonHistoryUploadNormal">#A6EDEDED</color>
+    <color name="colorButtonHistoryUploadPressed">#A6A5A5A5</color>
 </resources>

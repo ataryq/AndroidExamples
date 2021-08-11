@@ -1,11 +1,10 @@
 package com.example.melearning
 
 import android.content.Context
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import com.example.melearning.ui_utils.KeyboardController
 import dagger.Module
 import dagger.Provides
 
@@ -21,6 +20,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ActivityDaggerComponent.instance.build(this)
+        KeyboardController.instance.initialize(this)
+
         setCalculateFragment(savedInstanceState)
         println("onCreate:MainActivity")
     }
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<CalculationFragment>(R.id.fragment_container_view)
+            add(R.id.fragment_container_view, CalculationFragment(), CalculationFragment::class.java.name)
         }
     }
 }

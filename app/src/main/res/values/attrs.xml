@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomButtonUploadHistory">
+        <attr name="pressedColor" format="color" />
+        <attr name="defaultColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomHintButton">
+        <attr name="hintText" format="string" />
+    </declare-styleable>
+
+</resources>

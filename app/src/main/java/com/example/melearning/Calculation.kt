@@ -1,15 +1,9 @@
 package com.example.melearning
 
 import com.example.melearning.CalculationHistoryDb.CalculationInfo
-import kotlin.math.pow
-
-fun cutTheNumber(saveNumberAfterDot:Int, number:Double): Double {
-    var mult: Double = 10.0.pow(saveNumberAfterDot)
-    return (number * mult).toInt().toDouble() / mult
-}
 
 fun calculate(info: CalculationInfo): Double {
-    return calculate(info.percent!!, info.periods!!, info.initial!!, info.income!!)
+    return calculate(info.percent, info.periods, info.initial, info.income)
 }
 
 fun calculate(percent:Double, periods:Double, initial:Double, income:Double): Double {

@@ -2,6 +2,7 @@ package com.example.melearning
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import dagger.Module
 import dagger.Provides
@@ -13,8 +14,10 @@ import javax.inject.Singleton
 interface DataProvider {
     fun getAll(): LiveData<List<CalculationHistoryDb.CalculationInfo>>
     fun insertAll(vararg histories: CalculationHistoryDb.CalculationInfo)
+    fun update(vararg histories: CalculationHistoryDb.CalculationInfo)
     fun delete(history: CalculationHistoryDb.CalculationInfo)
     fun clear()
+    fun updateDbInProgress(): Boolean
 }
 
 @Module
@@ -28,14 +31,16 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
     }
 
     private var mDb:CalculationHistoryDatabase
-    private lateinit var mAllElements : LiveData<List<CalculationInfo>>
     private val mCoroutineScope: CoroutineScope = CoroutineScope(Dispatchers.IO)
+    private val mOperationInProgress = MutableLiveData(false)
 
     init {
         mDb = Room.databaseBuilder(context,
             CalculationHistoryDatabase::class.java,
             dbName).build()
-        updateAll()
+        getDatabaseHandler().getAll().observeForever {
+            mOperationInProgress.postValue(false)
+        }
     }
 
     private fun getDatabaseHandler(): CalculationHistoryDao {
@@ -44,10 +49,10 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
 
     @Entity(tableName = HistoryTableName)
     data class CalculationInfo(
-        @ColumnInfo(name = "percent") val percent: Double,
-        @ColumnInfo(name = "periods") val periods: Double,
-        @ColumnInfo(name = "initial") val initial: Double,
-        @ColumnInfo(name = "income") val income: Double,
+        @ColumnInfo(name = "percent") var percent: Double,
+        @ColumnInfo(name = "periods") var periods: Double,
+        @ColumnInfo(name = "initial") var initial: Double,
+        @ColumnInfo(name = "income") var income: Double,
         @PrimaryKey(autoGenerate = true) val id: Int? = null
         )
 
@@ -62,6 +67,9 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
         @Delete
         fun delete(history: CalculationInfo)
 
+        @Update
+        fun update(vararg histories: CalculationInfo)
+
         @Query("DELETE FROM $HistoryTableName")
         fun clearTable()
     }
@@ -71,32 +79,35 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
         abstract fun historyDao(): CalculationHistoryDao
     }
 
-    override fun getAll() : LiveData<List<CalculationInfo>> {
-        return mAllElements
-    }
-
-    private fun updateAll() {
-        mAllElements = mDb.historyDao().getAll()
-    }
+    override fun getAll() = mDb.historyDao().getAll()
 
     override fun insertAll(vararg histories: CalculationInfo) {
+        mOperationInProgress.postValue(true)
         mCoroutineScope.launch {
             getDatabaseHandler().insertAll(*histories)
-            updateAll()
+        }
+    }
+
+    override fun update(vararg histories: CalculationInfo) {
+        mOperationInProgress.postValue(true)
+        mCoroutineScope.launch {
+            getDatabaseHandler().update(*histories)
         }
     }
 
     override fun delete(history: CalculationInfo) {
+        mOperationInProgress.postValue(true)
         mCoroutineScope.launch {
             getDatabaseHandler().delete(history)
-            updateAll()
         }
     }
 
     override fun clear() {
+        mOperationInProgress.postValue(true)
         mCoroutineScope.launch {
             mDb.clearAllTables()
-            updateAll()
         }
     }
+
+    override fun updateDbInProgress() = mOperationInProgress.value!!
 }

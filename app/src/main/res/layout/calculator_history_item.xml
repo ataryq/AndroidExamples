@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="calculationInfo"
+            type="com.example.melearning.CalculationHistoryDb.CalculationInfo" />
+    </data>
+
+<LinearLayout
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/small_rect"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp">
+
+    <EditText
+        android:id="@+id/percentTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/percent"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:text="@{Double.toString(calculationInfo.percent)}"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@android:color/tertiary_text_light"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/startSumTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/start_sum"
+        android:inputType="numberDecimal"
+        android:text="@{Double.toString(calculationInfo.initial)}"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@android:color/tertiary_text_light"
+        android:textSize="14sp"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/periodsTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/periods"
+        android:inputType="numberDecimal"
+        android:text="@{Double.toString(calculationInfo.periods)}"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@android:color/tertiary_text_light"
+        android:textSize="14sp"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/incomeTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/income"
+        android:inputType="numberDecimal"
+        android:text="@{Double.toString(calculationInfo.income)}"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@android:color/tertiary_text_light"
+        android:textSize="14sp"
+        android:importantForAutofill="no" />
+
+    <com.example.melearning.ui_utils.CustomAnimatedImageButton
+        android:id="@+id/history_item_apply_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:src="@drawable/ic_baseline_settings_backup_restore_24"
+        app:pressedColor="@color/colorButtonHistoryUploadPressed"
+        app:defaultColor="@color/colorButtonHistoryUploadNormal"/>
+
+    <com.example.melearning.ui_utils.CustomAnimatedImageButton
+        android:id="@+id/history_item_delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:src="@drawable/ic_baseline_close_24"
+        app:defaultColor="@color/colorButtonHistoryUploadNormal"
+        app:pressedColor="@color/colorButtonHistoryUploadPressed" />
+</LinearLayout>
+</layout>

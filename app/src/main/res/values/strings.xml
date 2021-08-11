@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">MeLearning</string>
     <string name="image_description">image_description</string>
+    <string name="start_sum">start sum</string>
+    <string name="percent">percent</string>
+    <string name="apply_history">apply history</string>
+    <string name="fake_text">fake_text</string>
+    <string name="content_description">contentDescription</string>
+    <string name="saved_history">Saved history</string>
+    <string name="initial">initial</string>
+    <string name="periods">periods</string>
+    <string name="income">income</string>
+    <string name="search">search</string>
+    <string name="settings">settings</string>
+    <string name="test">test</string>
     <integer name="com_vk_sdk_AppId">7748518</integer>
 </resources>

@@ -1,6 +1,6 @@
-package com.example.melearning
+package com.example.melearning.examples
 
-open interface Printable {
+interface Printable {
     val mHead: String
     fun print()
 }
@@ -32,7 +32,7 @@ open class Person(name: String = "Not specified", lastName: String = "Not specif
     }
 
     override fun print() {
-        var ageString = mAge?.let { "age is $mAge" } ?: ""
+        val ageString = mAge?.let { "age is $mAge" } ?: ""
 
         println("The person is $mName $mLastName $ageString");
     }
@@ -69,38 +69,38 @@ fun main3() {
     pupil1.mAge = 0
     pupil1.print()
 
-    var userData = PersonData("User1", 1)
-    var userData2 = PersonData("User1", 1)
+    val userData = PersonData("User1", 1)
+    val userData2 = PersonData("User1", 1)
 
     println(userData)
     println(userData == userData2)
     println("name: ${userData.component1()}, id: ${userData.component2()}")
-    var (name, id) = userData
+    val (name, id) = userData
     println("name: $name, id: $id")
 
     println(pupil1.personData())
 
-    var policeman = Policeman("Ariel", "Named", 1)
+    val policeman = Policeman("Ariel", "Named", 1)
     policeman.mAge = 22
     println(policeman.personData())
 
-    var personPrint: Printable = Person("1", "2", "head")
+    val personPrint: Printable = Person("1", "2", "head")
     personPrint.print()
 
-    var listVariables: List<Any> = listOf(5, "five", 5.0)
+    val listVariables: List<Any> = listOf(5, "five", 5.0)
     for (item in listVariables) {
         print("$item ")
     }
     println()
 
-    var itemNumber: Int
+    val itemNumber: Int
     if(listVariables[0] is Int)
         itemNumber = listVariables[0] as Int
 
     //Cause an error
     //itemNumber = listVariables[1] as Int
 
-    var itemString: String?
+    var itemString: String? = null
     //if not String return null without an error
     itemString = listVariables[1] as? String
 }

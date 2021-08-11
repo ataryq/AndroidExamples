@@ -24,4 +24,14 @@
         <item name="android:paddingBottom">10dp</item>
     </style>
 
+    <style name="MyBottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.BottomAppBar</item>
+    </style>
+
+    <style name="ThemeOverlay.BottomAppBar" parent="ThemeOverlay.MaterialComponents.BottomAppBar.Primary">
+        <item name="colorOnPrimary">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="background">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+    </style>
 </resources>

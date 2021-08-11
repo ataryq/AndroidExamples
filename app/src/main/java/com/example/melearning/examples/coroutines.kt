@@ -55,6 +55,7 @@ class Coroutines2 {
             withContext(IO) {
                 println(downloadUserData1())
             }
+            downloadUserData2()
         }
     }
 

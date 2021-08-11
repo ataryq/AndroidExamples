@@ -7,341 +7,341 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.melearning.CalculationFragmentViewModel" />
+            type="com.example.melearning.CalculationViewModel" />
     </data>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
-    >
-
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/fragment_root_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/editTextContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <FrameLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_weight="1">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="start sum"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_gravity="start"
-                    android:src="@drawable/help"
-                    app:tint="@color/colorAccent" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:layout_marginTop="26dp"
-                    android:background="@drawable/input_filed_rect">
-
-                    <EditText
-                        android:id="@+id/startSumET"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="72px"
-                        android:background="@null"
-                        android:ems="10"
-                        android:importantForAutofill="no"
-                        android:inputType="numberDecimal"
-                        android:text="@={viewModel.MStartSum}"
-                        android:textColor="#A6FFFFFF"
-                        android:textColorHint="#A6FFFFFF"
-                        android:textSize="24sp" />
-                </FrameLayout>
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_weight="1">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="+% per period"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_gravity="start"
-                    android:src="@drawable/help"
-                    app:tint="@color/colorAccent" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:layout_marginTop="26dp"
-                    android:background="@drawable/input_filed_rect">
-
-                    <EditText
-                        android:id="@+id/percentET"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="72px"
-                        android:background="@null"
-                        android:ems="10"
-                        android:importantForAutofill="no"
-                        android:inputType="numberDecimal"
-                        android:text="@={viewModel.MPercent}"
-                        android:textColor="#A6FFFFFF"
-                        android:textColorHint="#A6FFFFFF"
-                        android:textSize="24sp" />
-                </FrameLayout>
-
-            </FrameLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_weight="1">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="income per period"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_gravity="start"
-                    android:src="@drawable/help"
-                    app:tint="@color/colorAccent" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:layout_marginTop="26dp"
-                    android:background="@drawable/input_filed_rect">
-
-                    <EditText
-                        android:id="@+id/incomeET"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="72px"
-                        android:background="@null"
-                        android:ems="10"
-                        android:importantForAutofill="no"
-                        android:inputType="numberDecimal"
-                        android:text="@={viewModel.MIncome}"
-                        android:textColor="#A6FFFFFF"
-                        android:textColorHint="#A6FFFFFF"
-                        android:textSize="24sp" />
-                </FrameLayout>
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_weight="1">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="number of periods"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_gravity="start"
-                    android:src="@drawable/help"
-                    app:tint="@color/colorAccent" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:layout_marginTop="26dp"
-                    android:background="@drawable/input_filed_rect">
-
-                    <EditText
-                        android:id="@+id/numPeriodsET"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="72px"
-                        android:background="@null"
-                        android:ems="10"
-                        android:importantForAutofill="no"
-                        android:inputType="numberDecimal"
-                        android:text="@={viewModel.MPeriods}"
-                        android:textColor="#A6FFFFFF"
-                        android:textColorHint="#A6FFFFFF"
-                        android:textSize="24sp" />
-                </FrameLayout>
-
-            </FrameLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
                 android:layout_weight="1"
-                android:clickable="true"
-                android:visibility="invisible"
-                tools:visibility="invisible">
+                android:orientation="horizontal">
 
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:layout_marginTop="26dp"
-                    android:background="@drawable/input_filed_rect"
-                    android:visibility="invisible" />
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_weight="1"
-                android:clickable="true">
-
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:text="result"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_gravity="start"
-                    android:src="@drawable/help"
-                    app:tint="@color/colorAccent" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:layout_marginTop="26dp"
-                    android:background="@drawable/input_filed_rect">
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/resultTV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="72px"
-                        android:layout_marginRight="72px"
-                        android:background="@null"
-                        android:ems="10"
-                        android:importantForAutofill="no"
-                        android:inputType="numberDecimal"
-                        android:text="@{viewModel.MResult}"
-                        android:textColor="#A6FFFFFF"
-                        android:textColorHint="#A6FFFFFF"
-                        android:textSize="24sp" />
+                        android:layout_marginStart="24dp"
+                        android:text="start sum"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="start"
+                        android:src="@drawable/help"
+                        app:tint="@color/colorAccent" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="26dp"
+                        android:background="@drawable/input_filed_rect">
+
+                        <EditText
+                            android:id="@+id/startSumET"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="72px"
+                            android:background="@null"
+                            android:ems="10"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:text="@={viewModel.MStartSum}"
+                            android:textColor="#A6FFFFFF"
+                            android:textColorHint="#A6FFFFFF"
+                            android:textSize="24sp" />
+                    </FrameLayout>
+
                 </FrameLayout>
 
-            </FrameLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="+% per period"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="start"
+                        android:src="@drawable/help"
+                        app:tint="@color/colorAccent" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="26dp"
+                        android:background="@drawable/input_filed_rect">
+
+                        <EditText
+                            android:id="@+id/percentET"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="72px"
+                            android:background="@null"
+                            android:ems="10"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:text="@={viewModel.MPercent}"
+                            android:textColor="#A6FFFFFF"
+                            android:textColorHint="#A6FFFFFF"
+                            android:textSize="24sp" />
+                    </FrameLayout>
+
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="income per period"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="start"
+                        android:src="@drawable/help"
+                        app:tint="@color/colorAccent" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="26dp"
+                        android:background="@drawable/input_filed_rect">
+
+                        <EditText
+                            android:id="@+id/incomeET"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="72px"
+                            android:background="@null"
+                            android:ems="10"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:text="@={viewModel.MIncome}"
+                            android:textColor="#A6FFFFFF"
+                            android:textColorHint="#A6FFFFFF"
+                            android:textSize="24sp" />
+                    </FrameLayout>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="number of periods"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="start"
+                        android:src="@drawable/help"
+                        app:tint="@color/colorAccent" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="26dp"
+                        android:background="@drawable/input_filed_rect">
+
+                        <EditText
+                            android:id="@+id/numPeriodsET"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="72px"
+                            android:background="@null"
+                            android:ems="10"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:text="@={viewModel.MPeriods}"
+                            android:textColor="#A6FFFFFF"
+                            android:textColorHint="#A6FFFFFF"
+                            android:textSize="24sp" />
+                    </FrameLayout>
+
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:visibility="invisible"
+                    tools:visibility="invisible">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="26dp"
+                        android:background="@drawable/input_filed_rect"
+                        android:visibility="invisible" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_weight="1"
+                    android:clickable="true">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="result"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="start"
+                        android:src="@drawable/help"
+                        app:tint="@color/colorAccent" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="26dp"
+                        android:background="@drawable/input_filed_rect">
+
+                        <TextView
+                            android:id="@+id/resultTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="72px"
+                            android:layout_marginRight="72px"
+                            android:background="@null"
+                            android:ems="10"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:text="@{viewModel.MResult}"
+                            android:textColor="#A6FFFFFF"
+                            android:textColorHint="#A6FFFFFF"
+                            android:textSize="24sp" />
+                    </FrameLayout>
+
+                </FrameLayout>
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:theme="@style/AppThemeMaterial"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_app_bar"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:tint="@color/colorAccent"
-            app:backgroundTint="#313949"
-            app:fabAlignmentMode="center"
-            app:fabCradleMargin="8dp"
-            app:fabCradleRoundedCornerRadius="12dp"
-            app:menu="@menu/bottomappbar_menu"
-            app:navigationIcon="@drawable/baseline_menu_white_24" />
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:theme="@style/AppThemeMaterial"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/saveResultButton"
-            style="@style/AppThemeMaterial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#313949"
-            android:backgroundTint="#313949"
-            android:src="@drawable/baseline_save_white_24"
-            android:tint="@color/colorAccent"
-            app:backgroundTint="#313949"
-            app:fabSize="normal"
-            app:layout_anchor="@id/bottom_app_bar"
-            app:tint="@color/colorAccent" />
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottom_app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:tint="@color/colorAccent"
+                app:backgroundTint="#313949"
+                app:fabAlignmentMode="center"
+                app:fabCradleMargin="8dp"
+                app:fabCradleRoundedCornerRadius="12dp"
+                app:menu="@menu/bottom_app_bar_menu"
+                app:navigationIcon="@drawable/baseline_menu_white_24" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/saveResultButton"
+                style="@style/AppThemeMaterial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#313949"
+                android:backgroundTint="#313949"
+                android:src="@drawable/baseline_save_white_24"
+                android:tint="@color/colorAccent"
+                app:backgroundTint="#313949"
+                app:fabSize="normal"
+                app:layout_anchor="@id/bottom_app_bar"
+                app:tint="@color/colorAccent" />
 
-</LinearLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </LinearLayout>
 </layout>

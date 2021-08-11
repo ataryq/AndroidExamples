@@ -6,7 +6,7 @@ import javax.inject.Singleton
 
 @Singleton
 class ElectricHeater @Inject constructor() {
-    var heating: Boolean = false
+    private var heating: Boolean = false
     init {
         println("++++Electric heater instantiated")
     }
@@ -54,7 +54,7 @@ interface CoffeeShop {
     fun maker(): CoffeeMaker
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val coffee = DaggerCoffeeShop.builder().build()
     coffee.maker().brew()
 }
