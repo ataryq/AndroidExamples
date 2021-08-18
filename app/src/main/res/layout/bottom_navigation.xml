@@ -5,7 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="?attr/colorPrimary"
         android:clickable="false"
         android:focusableInTouchMode="false">
 
@@ -26,7 +26,6 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/saved_history"
                 android:textAlignment="center"
-                android:textColor="@color/colorAccent"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -37,40 +36,33 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    style="@style/HistoryTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/percent"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="14sp" />
+                    />
 
                 <TextView
+                    style="@style/HistoryTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/initial"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="14sp" />
+                    android:text="@string/initial" />
 
                 <TextView
+                    style="@style/HistoryTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/periods"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="14sp" />
+                    android:text="@string/periods"/>
 
                 <TextView
+                    style="@style/HistoryTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/income"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="14sp" />
+                    android:text="@string/income" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

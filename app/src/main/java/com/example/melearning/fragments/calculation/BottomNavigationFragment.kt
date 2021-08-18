@@ -1,17 +1,20 @@
-package com.example.melearning
+package com.example.melearning.fragments.calculation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.example.melearning.DataProvider
+import com.example.melearning.R
 import com.example.melearning.databinding.BottomNavigationBinding
 import com.example.melearning.history_adapter.HistoryAdapter
 import com.example.melearning.history_adapter.HistoryItemListener
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationFragment(private val mListener: HistoryItemListener,
-                               private val mDataProvider: DataProvider):
+                               private val mDataProvider: DataProvider
+):
     BottomSheetDialogFragment(){
 
     private lateinit var mAdapter: HistoryAdapter

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="Autofill">
     <data>
         <variable
             name="calculationInfo"
@@ -18,60 +20,28 @@
     android:paddingBottom="2dp">
 
     <EditText
+        style="@style/HistoryItemTextStyle"
         android:id="@+id/percentTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:hint="@string/percent"
-        android:importantForAutofill="no"
-        android:inputType="numberDecimal"
-        android:text="@{Double.toString(calculationInfo.percent)}"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@android:color/tertiary_text_light"
-        android:textSize="14sp" />
+        android:text="@{Double.toString(calculationInfo.percent)}"/>
 
     <EditText
+        style="@style/HistoryItemTextStyle"
         android:id="@+id/startSumTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:hint="@string/start_sum"
-        android:inputType="numberDecimal"
-        android:text="@{Double.toString(calculationInfo.initial)}"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@android:color/tertiary_text_light"
-        android:textSize="14sp"
-        android:importantForAutofill="no" />
+        android:text="@{Double.toString(calculationInfo.initial)}" />
 
     <EditText
+        style="@style/HistoryItemTextStyle"
         android:id="@+id/periodsTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:hint="@string/periods"
-        android:inputType="numberDecimal"
-        android:text="@{Double.toString(calculationInfo.periods)}"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@android:color/tertiary_text_light"
-        android:textSize="14sp"
-        android:importantForAutofill="no" />
+        android:text="@{Double.toString(calculationInfo.periods)}" />
 
     <EditText
+        style="@style/HistoryItemTextStyle"
         android:id="@+id/incomeTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:hint="@string/income"
-        android:inputType="numberDecimal"
-        android:text="@{Double.toString(calculationInfo.income)}"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@android:color/tertiary_text_light"
-        android:textSize="14sp"
-        android:importantForAutofill="no" />
+        android:text="@{Double.toString(calculationInfo.income)}" />
 
     <com.example.melearning.ui_utils.CustomAnimatedImageButton
         android:id="@+id/history_item_apply_button"

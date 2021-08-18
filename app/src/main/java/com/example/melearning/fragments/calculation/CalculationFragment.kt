@@ -1,4 +1,4 @@
-package com.example.melearning
+package com.example.melearning.fragments.calculation
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -10,8 +10,13 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.melearning.CalculationHistoryDb.CalculationInfo
+import com.example.melearning.DataProvider
+import com.example.melearning.fragments.main_activity.MainActivityViewModel
+import com.example.melearning.R
 import com.example.melearning.databinding.PercentCalculationFragmentBinding
+import com.example.melearning.di.ActivityDaggerComponent
 import com.example.melearning.history_adapter.HistoryItemListener
 import com.example.melearning.ui_utils.CustomEditTextWrapper
 import javax.inject.Inject
@@ -19,10 +24,12 @@ import javax.inject.Inject
 class CalculationFragment: Fragment(), HistoryItemListener {
     @Inject lateinit var mDb: DataProvider
     @Inject lateinit var mActivity: AppCompatActivity
-    private lateinit var mViewModel: CalculationViewModel
+    private val mViewModel: CalculationViewModel by activityViewModels()
+    private val mActivityViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var mBinding: PercentCalculationFragmentBinding
     private val mEditTextWrappers = ArrayList<CustomEditTextWrapper>()
     private var mBottomNavDrawerFragment: BottomNavigationFragment? = null
+    private var mIsBottomAppBarHidden = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +44,15 @@ class CalculationFragment: Fragment(), HistoryItemListener {
             container,
             false)
         mBinding.lifecycleOwner = this
-        mViewModel = CalculationFragmentViewModelFactory.createModel(this, mDb)
+        mViewModel.mDb = mDb
         mBinding.viewModel = mViewModel
 
-        editTextsSetup()
+        setupEditTexts()
 
         return mBinding.root
     }
 
-    private fun editTextsSetup() {
+    private fun setupEditTexts() {
         mBinding.editTextContainer.setOnClickListener {
             println("click editTextContainer")
         }
@@ -67,10 +74,22 @@ class CalculationFragment: Fragment(), HistoryItemListener {
         initBottomActionBar()
     }
 
+    override fun onResume() {
+        super.onResume()
+        mActivityViewModel.backIconVisible.postValue(false)
+    }
+
     private fun initBottomActionBar() {
         mBinding.saveResultButton.setOnClickListener {
-            mViewModel.saveCalculationToHistory()
+            if(!mIsBottomAppBarHidden)
+                mViewModel.saveCalculationToHistory()
+            else {
+                mBinding.bottomAppBar.performShow()
+                mIsBottomAppBarHidden = false
+            }
         }
+
+        mBinding.saveResultButton.requestFocus()
 
         mBinding.bottomAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -78,8 +97,9 @@ class CalculationFragment: Fragment(), HistoryItemListener {
                     showClearAllDialog()
                     true
                 }
-                R.id.app_bar_settings -> {
-                    println("app_bar_settings")
+                R.id.app_bar_hide -> {
+                    mBinding.bottomAppBar.performHide()
+                    mIsBottomAppBarHidden = true
                     true
                 }
                 else -> false
@@ -97,9 +117,7 @@ class CalculationFragment: Fragment(), HistoryItemListener {
     override fun onCreateContextMenu(
         menu: ContextMenu,
         v: View,
-        menuInfo: ContextMenu.ContextMenuInfo?
-    ) {
-
+        menuInfo: ContextMenu.ContextMenuInfo?) {
         menu.setHeaderTitle("HeaderTitle")
         menu.add(0, 0, 0, "homescreen")
         super.onCreateContextMenu(menu, v, menuInfo)

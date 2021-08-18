@@ -3,6 +3,11 @@
     <color name="colorPrimary">#313949</color>
     <color name="colorPrimaryDark">#29303E</color>
     <color name="colorAccent">#A6FFFFFF</color>
+    <color name="colorHint">#A6BDBDBD</color>
+
+    <color name="colorPrimary_light">#487EED</color>
+    <color name="colorPrimaryDark_light">#2D54A1</color>
+    <color name="colorAccent_light">#C8EEFF</color>
 
     <color name="emptyColor">#00FFFFFF</color>
     <color name="colorButtonHistoryUploadNormal">#A6EDEDED</color>

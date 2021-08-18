@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.preference.SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/theme_store_key"
+        android:summary="Click to apply dark or light theme"
+        android:title="Use dark theme" />
+</androidx.preference.PreferenceScreen>

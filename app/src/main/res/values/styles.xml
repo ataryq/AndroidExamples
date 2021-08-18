@@ -1,37 +1,100 @@
-<resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="CustomAppThemeBase" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:textViewStyle">@style/Widget.MyApp.TextView</item>
+        <item name="buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+        <item name="bottomAppBarStyle">@style/MyBottomAppBar</item>
     </style>
 
-    <style name="AppThemeMaterial" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="CustomAppThemeDark" parent="CustomAppThemeBase">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--custom attribute-->
+        <item name="input_text_margin" tools:ignore="PxUsage">52px</item>
     </style>
 
-    <style name="editTextStyle" parent="@style/Widget.AppCompat.EditText">
-        <item name="colorPrimary">#555</item>
-        <item name="android:textCursorDrawable">@null</item>
+    <style name="CustomAppThemeLight" parent="CustomAppThemeBase">
+        <item name="colorPrimary">@color/colorPrimary_light</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_light</item>
+        <item name="colorAccent">@color/colorAccent_light</item>
+        <!--custom attribute-->
+        <item name="input_text_margin" tools:ignore="PxUsage">102px</item>
+    </style>
+
+    <style name="Theme.MyApp" parent="@style/Theme.MaterialComponents.Light">
+        <item name="android:textViewStyle">@style/Widget.MyApp.TextView</item>
+    </style>
+
+    <style name="ActionBar.Solid.GreenStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:background">@android:color/holo_green_dark</item>
+    </style>
+
+<!--custom default text style-->
+    <style name="Widget.MyApp.TextView" parent="@android:style/Widget.Material.TextView">
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="CalculationTextStyle" parent="@style/Widget.AppCompat.EditText">
         <item name="android:textSize">24sp</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:textColorHint">?attr/colorAccent</item>
+        <!--custom attributes-->
+        <item name="android:layout_marginLeft" tools:ignore="PxUsage">?attr/input_text_margin</item>
+        <item name="android:layout_marginRight" tools:ignore="PxUsage">?attr/input_text_margin</item>
+        <item name="android:background">@null</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:importantForAutofill" tools:ignore="NewApi">no</item>
     </style>
 
+    <style name="HistoryItemTextStyle" parent="@style/CalculationTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="CalculationFieldStyle" parent="Widget.Design.ScrimInsetsFrameLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="CalculationTextFieldStyle" parent="Widget.Design.ScrimInsetsFrameLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_marginTop">26dp</item>
+        <item name="android:background">@drawable/input_filed_rect</item>
+    </style>
+
+    <style name="HistoryTextField" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:textColorHint">?attr/colorAccent</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <!--custom bottom bar style-->
     <style name="MyBottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
         <item name="materialThemeOverlay">@style/ThemeOverlay.BottomAppBar</item>
+        <item name="tint">@color/colorAccent</item>
     </style>
 
     <style name="ThemeOverlay.BottomAppBar" parent="ThemeOverlay.MaterialComponents.BottomAppBar.Primary">
-        <item name="colorOnPrimary">@color/colorAccent</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="background">@color/colorPrimary</item>
-        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="colorOnPrimary">?attr/colorAccent</item>
+        <item name="background">?attr/colorPrimary</item>
+        <item name="colorSurface">?attr/colorPrimary</item>
+        <item name="android:textColorPrimary">?attr/colorAccent</item>
     </style>
+
 </resources>

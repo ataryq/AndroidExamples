@@ -1,4 +1,4 @@
-package com.example.melearning
+package com.example.melearning.ui_utils
 
 open class Event<out T>(private val content: T) {
 

@@ -1,7 +1,9 @@
-package com.example.melearning
+package com.example.melearning.di
 
 import android.app.Application
 import android.content.Context
+import com.example.melearning.CalculationHistoryDb
+import com.example.melearning.DataProvider
 import dagger.Component
 import dagger.Module
 import dagger.Provides

@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".CalculationFragment">
+    tools:context=".fragments.calculation.CalculationFragment">
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.melearning.CalculationViewModel" />
+            type="com.example.melearning.fragments.calculation.CalculationViewModel" />
     </data>
 
     <LinearLayout
@@ -310,7 +310,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:theme="@style/AppThemeMaterial"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -329,7 +328,6 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/saveResultButton"
-                style="@style/AppThemeMaterial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#313949"

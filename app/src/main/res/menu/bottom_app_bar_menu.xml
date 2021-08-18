@@ -9,24 +9,9 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/app_bar_settings"
-        android:actionLayout="@layout/bottom_app_bar_menu_item"
-        android:icon="@drawable/baseline_save_white_24"
-        android:title="@string/settings"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/app_bar_test"
-        android:actionLayout="@layout/bottom_app_bar_menu_item"
+        android:id="@+id/app_bar_hide"
         android:icon="@drawable/ic_baseline_settings_backup_restore_24"
-        android:title="@string/test"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/app_bar_test2"
-        android:actionLayout="@layout/bottom_app_bar_menu_item"
-        android:icon="@drawable/ic_baseline_settings_backup_restore_24"
-        android:title="@string/test"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/hide"
+        app:showAsAction="never"/>
 
 </menu>

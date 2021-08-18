@@ -13,5 +13,16 @@
     <string name="search">search</string>
     <string name="settings">settings</string>
     <string name="test">test</string>
+    <string name="empty_hint" />
+    <string name="clear_all_history">Clear all history?</string>
+    <string name="ask_clear_all_history">Are you sure want to clear all history?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
     <integer name="com_vk_sdk_AppId">7748518</integer>
+    <string name="theme_store_key">use_dark_theme</string>
+    <string name="back">back</string>
+    <string name="hide">hide</string>
+    <string name="show">show</string>
+    <string name="test_fragment_1">Test fragment 1</string>
+    <string name="photo">Photo</string>
 </resources>

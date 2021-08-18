@@ -1,5 +1,8 @@
-package com.example.melearning
+package com.example.melearning.di
 
+import com.example.melearning.fragments.calculation.BottomNavigationFragment
+import com.example.melearning.fragments.calculation.CalculationFragment
+import com.example.melearning.fragments.main_activity.MainActivity
 import dagger.Component
 import javax.inject.Scope
 
