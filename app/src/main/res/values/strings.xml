@@ -25,4 +25,6 @@
     <string name="show">show</string>
     <string name="test_fragment_1">Test fragment 1</string>
     <string name="photo">Photo</string>
+    <string name="animation_fragment">Animation fragment</string>
+    <string name="do_not_press">Do not press</string>
 </resources>

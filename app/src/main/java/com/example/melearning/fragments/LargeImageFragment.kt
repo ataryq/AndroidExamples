@@ -31,13 +31,11 @@ class LargeImageFragment: BaseFragment() {
         enterTransition = getTransaction(R.transition.exit_shared_image)
         (enterTransition as TransitionSet).excludeTarget(binding.largePhoto, true)
 
-//        val enterTransitionSet: TransitionSet = enterTransition as TransitionSet
-//        enterTransitionSet.excludeTarget(binding.largePhoto, true)
-
         arguments?.getInt("large_photo_id")?.let {
             binding.largePhoto.setImageResource(it)
+            binding.largePhoto.transitionName = it.toString()
         }
-        ViewCompat.setTransitionName(binding.largePhoto, "large_photo")
+
         initSharedCallback()
 
         return root

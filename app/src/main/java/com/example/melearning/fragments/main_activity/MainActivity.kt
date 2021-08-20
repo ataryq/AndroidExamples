@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.melearning.AppThemeController
 import com.example.melearning.FragmentManagerUtils.Companion.checkClassCurrentFragment
 import com.example.melearning.FragmentManagerUtils.Companion.showFragment
+import com.example.melearning.FragmentManagerUtils.Companion.showSecondaryFragment
 import com.example.melearning.R
 import com.example.melearning.di.ActivityDaggerComponent
+import com.example.melearning.fragments.AnimationFragment
 import com.example.melearning.fragments.calculation.CalculationFragment
 import com.example.melearning.fragments.SettingsFragment
-import com.example.melearning.fragments.TestFragment1
+import com.example.melearning.fragments.SharedViewFragment
 import com.example.melearning.ui_utils.KeyboardController
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.Module
@@ -67,12 +69,15 @@ class MainActivity : AppCompatActivity() {
                     showFragment<SettingsFragment>(supportFragmentManager)
                     true
                 }
-                R.id.app_bar_test_fragment_1 -> {
-                    showFragment<TestFragment1>(supportFragmentManager,
-                        R.anim.enter, R.anim.fade_out,
-                        R.anim.empty, R.anim.pop_exit)
+                R.id.app_bar_shared_fragment -> {
+                    showSecondaryFragment<SharedViewFragment>(supportFragmentManager)
                     true
                 }
+                R.id.app_bar_animation_fragment -> {
+                    showSecondaryFragment<AnimationFragment>(supportFragmentManager)
+                    true
+                }
+
                 else -> false
             }
         }

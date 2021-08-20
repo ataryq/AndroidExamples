@@ -9,9 +9,15 @@
             app:showAsAction="ifRoom"/>
 
         <item
-            android:id="@+id/app_bar_test_fragment_1"
+            android:id="@+id/app_bar_shared_fragment"
             android:icon="@drawable/ic_baseline_photo_library_24"
             android:title="@string/test_fragment_1"
+            app:showAsAction="ifRoom"/>
+
+        <item
+            android:id="@+id/app_bar_animation_fragment"
+            android:icon="@drawable/ic_baseline_layers_24"
+            android:title="@string/animation_fragment"
             app:showAsAction="ifRoom"/>
     </group>
 </menu>

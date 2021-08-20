@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.example.melearning.fragments.SharedViewFragment
 
 class FragmentManagerUtils {
     companion object {
@@ -37,6 +38,13 @@ class FragmentManagerUtils {
 
         inline fun <reified T: Fragment> fragmentTag() = T::class.java.name
         inline fun <reified T: Fragment> backStackTag() = "${fragmentTag<T>()}:state"
+
+        inline fun <reified T: Fragment> showSecondaryFragment(fragmentManager: FragmentManager)
+        {
+            showFragment<T>(fragmentManager,
+                R.anim.enter, R.anim.fade_out,
+                R.anim.empty, R.anim.pop_exit)
+        }
 
         inline fun <reified T: Fragment> showFragment(
             fragmentManager: FragmentManager,
