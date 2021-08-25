@@ -12,6 +12,7 @@ import com.example.melearning.FragmentManagerUtils.Companion.showSecondaryFragme
 import com.example.melearning.R
 import com.example.melearning.di.ActivityDaggerComponent
 import com.example.melearning.fragments.AnimationFragment
+import com.example.melearning.fragments.rx_fragment.RxFragment
 import com.example.melearning.fragments.calculation.CalculationFragment
 import com.example.melearning.fragments.SettingsFragment
 import com.example.melearning.fragments.SharedViewFragment
@@ -75,6 +76,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.app_bar_animation_fragment -> {
                     showSecondaryFragment<AnimationFragment>(supportFragmentManager)
+                    true
+                }
+                R.id.app_bar_rx_fragment -> {
+                    showSecondaryFragment<RxFragment>(supportFragmentManager)
                     true
                 }
 

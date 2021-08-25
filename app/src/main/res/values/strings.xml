@@ -27,4 +27,8 @@
     <string name="photo">Photo</string>
     <string name="animation_fragment">Animation fragment</string>
     <string name="do_not_press">Do not press</string>
+    <string name="clear">CLEAR</string>
+    <string name="rx_fragment">Rx fragment</string>
+    <string name="input_number">Input number</string>
+    <string name="_0">0</string>
 </resources>

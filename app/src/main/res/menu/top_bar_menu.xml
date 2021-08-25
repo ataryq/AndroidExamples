@@ -19,5 +19,12 @@
             android:icon="@drawable/ic_baseline_layers_24"
             android:title="@string/animation_fragment"
             app:showAsAction="ifRoom"/>
+
+        <item
+            android:id="@+id/app_bar_rx_fragment"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="@string/rx_fragment"
+            app:showAsAction="ifRoom"/>
+
     </group>
 </menu>

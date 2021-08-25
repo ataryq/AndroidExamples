@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import dagger.Module
 import dagger.Provides
+import io.reactivex.Flowable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 
 interface DataProvider {
     fun getAll(): LiveData<List<CalculationHistoryDb.CalculationInfo>>
+    fun getAllRx(): Flowable<List<CalculationHistoryDb.CalculationInfo>>
     fun insertAll(vararg histories: CalculationHistoryDb.CalculationInfo)
     fun update(vararg histories: CalculationHistoryDb.CalculationInfo)
     fun delete(history: CalculationHistoryDb.CalculationInfo)
@@ -61,6 +63,9 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
         @Query("SELECT * FROM $HistoryTableName")
         fun getAll(): LiveData<List<CalculationInfo>>
 
+        @Query("SELECT * FROM $HistoryTableName")
+        fun getAllRx(): Flowable<List<CalculationInfo>>
+
         @Insert
         fun insertAll(vararg histories: CalculationInfo)
 
@@ -80,6 +85,7 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
     }
 
     override fun getAll() = mDb.historyDao().getAll()
+    override fun getAllRx() = mDb.historyDao().getAllRx()
 
     override fun insertAll(vararg histories: CalculationInfo) {
         mOperationInProgress.postValue(true)

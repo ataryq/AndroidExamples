@@ -8,8 +8,8 @@ import androidx.databinding.DataBindingUtil
 import com.example.melearning.DataProvider
 import com.example.melearning.R
 import com.example.melearning.databinding.BottomNavigationBinding
-import com.example.melearning.history_adapter.HistoryAdapter
-import com.example.melearning.history_adapter.HistoryItemListener
+import com.example.melearning.fragments.calculation.history_adapter.HistoryAdapter
+import com.example.melearning.fragments.calculation.history_adapter.HistoryItemListener
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationFragment(private val mListener: HistoryItemListener,
