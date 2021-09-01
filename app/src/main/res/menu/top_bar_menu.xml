@@ -26,5 +26,17 @@
             android:title="@string/rx_fragment"
             app:showAsAction="ifRoom"/>
 
+        <item
+            android:id="@+id/app_bar_cicerone_example"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="@string/cicerone_example"
+            app:showAsAction="ifRoom"/>
+
+        <item
+            android:id="@+id/app_bar_tests"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="@string/start_tests"
+            app:showAsAction="ifRoom"/>
+
     </group>
 </menu>

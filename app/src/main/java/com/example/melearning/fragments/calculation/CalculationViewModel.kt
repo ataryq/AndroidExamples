@@ -51,7 +51,6 @@ class CalculationViewModel(application: Application):
     }
 
     override fun onChanged(t: String?) {
-        println("onChanged")
         calculate()
     }
 
@@ -69,7 +68,7 @@ class CalculationViewModel(application: Application):
     private fun calculate() {
         val resultNum: Double = calculate(getCalculationInfo())
         mResult.postValue(String.format("%.2f", resultNum))
-        println("resultNum: $resultNum")
+//        println("resultNum: $resultNum")
     }
 
     private fun getCalculationInfo(): CalculationHistoryDb.CalculationInfo {
@@ -83,7 +82,7 @@ class CalculationViewModel(application: Application):
         ifEmptySetZero(mStartSum)
         ifEmptySetZero(mIncome)
 
-        println("percent: $percentNum, periods: $periodsNum, startAmount: $initialNum, income: $incomeNum")
+//        println("percent: $percentNum, periods: $periodsNum, startAmount: $initialNum, income: $incomeNum")
         return CalculationHistoryDb.CalculationInfo(percentNum, periodsNum, initialNum, incomeNum)
     }
 

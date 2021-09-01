@@ -5,21 +5,26 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import com.example.melearning.AppThemeController
 import com.example.melearning.FragmentManagerUtils.Companion.checkClassCurrentFragment
 import com.example.melearning.FragmentManagerUtils.Companion.showFragment
 import com.example.melearning.FragmentManagerUtils.Companion.showSecondaryFragment
 import com.example.melearning.R
 import com.example.melearning.di.ActivityDaggerComponent
+import com.example.melearning.di.MyViewModel
+import com.example.melearning.di.startKoinTests
 import com.example.melearning.fragments.AnimationFragment
-import com.example.melearning.fragments.rx_fragment.RxFragment
-import com.example.melearning.fragments.calculation.CalculationFragment
 import com.example.melearning.fragments.SettingsFragment
 import com.example.melearning.fragments.SharedViewFragment
+import com.example.melearning.fragments.calculation.CalculationFragment
+import com.example.melearning.fragments.cicerone.CiceroneBaseFragment
+import com.example.melearning.fragments.rx_fragment.RxFragment
 import com.example.melearning.ui_utils.KeyboardController
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.Module
 import dagger.Provides
+import org.koin.android.viewmodel.ext.android.viewModel
 
 @Module
 class MainActivity : AppCompatActivity() {
@@ -28,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var themeController: AppThemeController
     private val viewModel: MainActivityViewModel by viewModels()
     private var toolbarNavIcon: Drawable? = null
+    val myKoinViewModel: MyViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +50,14 @@ class MainActivity : AppCompatActivity() {
             checkBackButtonVisibility()
         }
         showFragment<CalculationFragment>(supportFragmentManager)
+
+        startExamples()
+    }
+
+    private fun startExamples() {
+//        startLiveDataTest()
+//        startKotlinFlowTests()
+        startKoinTests(this)
     }
 
     private fun checkBackButtonVisibility() {
@@ -80,6 +94,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.app_bar_rx_fragment -> {
                     showSecondaryFragment<RxFragment>(supportFragmentManager)
+                    true
+                }
+                R.id.app_bar_cicerone_example -> {
+                    showSecondaryFragment<CiceroneBaseFragment>(supportFragmentManager)
+                    true
+                }
+                R.id.app_bar_tests -> {
+                    startExamples()
                     true
                 }
 

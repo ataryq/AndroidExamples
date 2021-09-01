@@ -31,4 +31,10 @@
     <string name="rx_fragment">Rx fragment</string>
     <string name="input_number">Input number</string>
     <string name="_0">0</string>
+    <string name="next">Next</string>
+    <string name="cicerone_child">Cicerone child %s</string>
+    <string name="cicerone_example">Cicerone example</string>
+    <string name="cicerone_base">Cicerone base</string>
+    <string name="go_to_start">go to start</string>
+    <string name="start_tests">Start tests</string>
 </resources>
