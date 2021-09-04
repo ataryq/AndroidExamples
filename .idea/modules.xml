@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MeLearning.iml" filepath="$PROJECT_DIR$/.idea/modules/MeLearning.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MeLearning.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MeLearning.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/custom_ui/MeLearning.custom_ui.iml" filepath="$PROJECT_DIR$/.idea/modules/custom_ui/MeLearning.custom_ui.iml" />
     </modules>
   </component>
 </project>

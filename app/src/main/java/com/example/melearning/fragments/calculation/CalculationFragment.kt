@@ -18,7 +18,7 @@ import com.example.melearning.R
 import com.example.melearning.databinding.PercentCalculationFragmentBinding
 import com.example.melearning.di.ActivityDaggerComponent
 import com.example.melearning.fragments.calculation.history_adapter.HistoryItemListener
-import com.example.melearning.ui_utils.CustomEditTextWrapper
+import com.example.custom_ui.CustomEditTextWrapper
 import javax.inject.Inject
 
 class CalculationFragment: Fragment(), HistoryItemListener {

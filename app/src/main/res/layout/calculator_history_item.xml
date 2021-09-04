@@ -43,7 +43,7 @@
         android:hint="@string/income"
         android:text="@{Double.toString(calculationInfo.income)}" />
 
-    <com.example.melearning.ui_utils.CustomAnimatedImageButton
+    <com.example.custom_ui.CustomAnimatedImageButton
         android:id="@+id/history_item_apply_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         app:pressedColor="@color/colorButtonHistoryUploadPressed"
         app:defaultColor="@color/colorButtonHistoryUploadNormal"/>
 
-    <com.example.melearning.ui_utils.CustomAnimatedImageButton
+    <com.example.custom_ui.CustomAnimatedImageButton
         android:id="@+id/history_item_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

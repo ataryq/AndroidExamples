@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
 import com.example.melearning.AppThemeController
 import com.example.melearning.FragmentManagerUtils.Companion.checkClassCurrentFragment
 import com.example.melearning.FragmentManagerUtils.Companion.showFragment
@@ -20,7 +19,8 @@ import com.example.melearning.fragments.SharedViewFragment
 import com.example.melearning.fragments.calculation.CalculationFragment
 import com.example.melearning.fragments.cicerone.CiceroneBaseFragment
 import com.example.melearning.fragments.rx_fragment.RxFragment
-import com.example.melearning.ui_utils.KeyboardController
+import com.example.custom_ui.KeyboardController
+import com.example.melearning.fragments.ShimmeringExampleFragment
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.Module
 import dagger.Provides
@@ -102,6 +102,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.app_bar_tests -> {
                     startExamples()
+                    true
+                }
+                R.id.app_bar_shimmering_example -> {
+                    showSecondaryFragment<ShimmeringExampleFragment>(supportFragmentManager)
                     true
                 }
 

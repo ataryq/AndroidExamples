@@ -43,7 +43,7 @@
 
                 <FrameLayout style="@style/CalculationFieldStyle">
 
-                    <com.example.melearning.ui_utils.CustomHintButton
+                    <com.example.custom_ui.CustomHintButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:hintText="Input start sum" />
@@ -60,7 +60,7 @@
 
                 <FrameLayout style="@style/CalculationFieldStyle">
 
-                    <com.example.melearning.ui_utils.CustomHintButton
+                    <com.example.custom_ui.CustomHintButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:hintText="Input add % per period" />
@@ -76,7 +76,7 @@
 
                 <FrameLayout style="@style/CalculationFieldStyle">
 
-                    <com.example.melearning.ui_utils.CustomHintButton
+                    <com.example.custom_ui.CustomHintButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:hintText="Input income per period" />
@@ -92,7 +92,7 @@
 
                 <FrameLayout style="@style/CalculationFieldStyle">
 
-                    <com.example.melearning.ui_utils.CustomHintButton
+                    <com.example.custom_ui.CustomHintButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:hintText="Input number of periods" />
@@ -109,7 +109,7 @@
 
                 <FrameLayout style="@style/CalculationFieldStyle">
 
-                    <com.example.melearning.ui_utils.CustomHintButton
+                    <com.example.custom_ui.CustomHintButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:hintText="Calculation result" />

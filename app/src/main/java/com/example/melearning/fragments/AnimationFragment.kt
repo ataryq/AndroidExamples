@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
+import com.example.custom_ui.doOnEnd
+import com.example.custom_ui.startAnimationFromId
 import com.example.melearning.R
 import com.example.melearning.databinding.AnimationFragmentBinding
-import com.example.melearning.ui_utils.startAnimationFromId
-import com.example.melearning.ui_utils.doOnEnd
 
 class AnimationFragment: BaseBindFragment<AnimationFragmentBinding>() {
     override fun layoutId() = R.layout.animation_fragment

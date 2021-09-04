@@ -5,7 +5,7 @@ import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
 import com.example.melearning.CalculationHistoryDb
 import com.example.melearning.databinding.CalculatorHistoryItemBinding
-import com.example.melearning.ui_utils.CustomEditTextWrapper
+import com.example.custom_ui.CustomEditTextWrapper
 
 class HistoryAdapterItem(private var mBinding: CalculatorHistoryItemBinding,
                          private val mListener: HistoryItemListener)

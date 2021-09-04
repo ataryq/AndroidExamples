@@ -37,4 +37,5 @@
     <string name="cicerone_base">Cicerone base</string>
     <string name="go_to_start">go to start</string>
     <string name="start_tests">Start tests</string>
+    <string name="shimmering_example">Shimmering example</string>
 </resources>

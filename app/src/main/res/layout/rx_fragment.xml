@@ -57,7 +57,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.example.melearning.ui_utils.CustomImageButton
+            <com.example.custom_ui.CustomImageButton
                 android:id="@+id/minusButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -80,7 +80,7 @@
                 android:textSize="24sp"
                 tools:ignore="Autofill,LabelFor" />
 
-            <com.example.melearning.ui_utils.CustomImageButton
+            <com.example.custom_ui.CustomImageButton
                 android:id="@+id/plusButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
