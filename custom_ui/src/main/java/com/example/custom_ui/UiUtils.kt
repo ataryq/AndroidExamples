@@ -5,7 +5,7 @@ import androidx.annotation.AttrRes
 import androidx.core.content.res.getColorOrThrow
 
 @Suppress("MemberVisibilityCanBePrivate")
-class UiUtils {
+class UiUtils(private val context: Context) {
     companion object {
         fun getPrimaryColor(context: Context): Int {
             return getAttributeColor(R.attr.colorPrimary, context)
@@ -22,4 +22,8 @@ class UiUtils {
             return primaryColor
         }
     }
+
+    fun getPrimaryColor() = getPrimaryColor(context)
+    fun getAccentColor() = getAccentColor(context)
+    fun getAttributeColor(@AttrRes colorId: Int) = getAttributeColor(colorId, context)
 }

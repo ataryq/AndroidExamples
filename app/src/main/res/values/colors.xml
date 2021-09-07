@@ -12,5 +12,5 @@
     <color name="emptyColor">#00FFFFFF</color>
     <color name="colorButtonHistoryUploadNormal">#A6EDEDED</color>
     <color name="colorButtonHistoryUploadPressed">#A6A5A5A5</color>
-    <color name="shimmer_placeholder">#80AAAAAA</color>
+    <color name="shimmer_placeholder">#B3DADADA</color>
 </resources>

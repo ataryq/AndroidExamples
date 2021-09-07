@@ -39,7 +39,7 @@ class FragmentManagerUtils {
         inline fun <reified T: Fragment> fragmentTag() = T::class.java.name
         inline fun <reified T: Fragment> backStackTag() = "${fragmentTag<T>()}:state"
 
-        inline fun <reified T: Fragment> showSecondaryFragment(fragmentManager: FragmentManager)
+        inline fun <reified T: Fragment> showFragmentWithDefaultAnim(fragmentManager: FragmentManager)
         {
             showFragment<T>(fragmentManager,
                 R.anim.enter, R.anim.fade_out,

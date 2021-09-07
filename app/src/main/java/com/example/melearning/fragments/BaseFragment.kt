@@ -11,11 +11,13 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.melearning.fragments.main_activity.MainActivityViewModel
+import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseFragment: Fragment() {
     abstract fun layoutId(): Int
     abstract fun setBinding(binding: ViewDataBinding)
     protected val mActivityViewModel: MainActivityViewModel by activityViewModels()
+    protected val disposable = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,4 +36,9 @@ abstract class BaseFragment: Fragment() {
 
     fun getTransaction(transactionId: Int): Transition =
         TransitionInflater.from(requireContext()).inflateTransition(transactionId)
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
+    }
 }

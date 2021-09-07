@@ -8,11 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.melearning.AppThemeController
 import com.example.melearning.FragmentManagerUtils.Companion.checkClassCurrentFragment
 import com.example.melearning.FragmentManagerUtils.Companion.showFragment
-import com.example.melearning.FragmentManagerUtils.Companion.showSecondaryFragment
+import com.example.melearning.FragmentManagerUtils.Companion.showFragmentWithDefaultAnim
 import com.example.melearning.R
 import com.example.melearning.di.ActivityDaggerComponent
 import com.example.melearning.di.MyViewModel
-import com.example.melearning.di.startKoinTests
 import com.example.melearning.fragments.AnimationFragment
 import com.example.melearning.fragments.SettingsFragment
 import com.example.melearning.fragments.SharedViewFragment
@@ -21,6 +20,7 @@ import com.example.melearning.fragments.cicerone.CiceroneBaseFragment
 import com.example.melearning.fragments.rx_fragment.RxFragment
 import com.example.custom_ui.KeyboardController
 import com.example.melearning.fragments.ShimmeringExampleFragment
+import com.example.melearning.fragments.paging.PagingFragment
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.Module
 import dagger.Provides
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     private fun startExamples() {
 //        startLiveDataTest()
 //        startKotlinFlowTests()
-        startKoinTests(this)
+//        startKoinTests(this)
     }
 
     private fun checkBackButtonVisibility() {
@@ -85,19 +85,19 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.app_bar_shared_fragment -> {
-                    showSecondaryFragment<SharedViewFragment>(supportFragmentManager)
+                    showFragmentWithDefaultAnim<SharedViewFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_animation_fragment -> {
-                    showSecondaryFragment<AnimationFragment>(supportFragmentManager)
+                    showFragmentWithDefaultAnim<AnimationFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_rx_fragment -> {
-                    showSecondaryFragment<RxFragment>(supportFragmentManager)
+                    showFragmentWithDefaultAnim<RxFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_cicerone_example -> {
-                    showSecondaryFragment<CiceroneBaseFragment>(supportFragmentManager)
+                    showFragmentWithDefaultAnim<CiceroneBaseFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_tests -> {
@@ -105,7 +105,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.app_bar_shimmering_example -> {
-                    showSecondaryFragment<ShimmeringExampleFragment>(supportFragmentManager)
+                    showFragmentWithDefaultAnim<ShimmeringExampleFragment>(supportFragmentManager)
+                    true
+                }
+                R.id.app_bar_paginating_example -> {
+                    showFragmentWithDefaultAnim<PagingFragment>(supportFragmentManager)
                     true
                 }
 

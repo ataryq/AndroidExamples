@@ -51,3 +51,8 @@
 .idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_5_10.xml
 .idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_5_10.xml
 .idea/modules/custom_ui/MeLearning.custom_ui.iml
+.idea/libraries/Gradle__androidx_paging_paging_common_3_0_1.xml
+.idea/libraries/Gradle__androidx_paging_paging_common_ktx_3_0_1.xml
+.idea/libraries/Gradle__androidx_paging_paging_runtime_3_0_1_aar.xml
+.idea/libraries/Gradle__androidx_paging_paging_runtime_ktx_3_0_1_aar.xml
+.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_2_0_aar.xml

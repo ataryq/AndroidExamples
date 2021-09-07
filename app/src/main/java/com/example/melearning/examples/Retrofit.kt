@@ -1,8 +1,11 @@
 package com.example.melearning.examples
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asFlow
 import retrofit2.Response
 import retrofit2.http.*
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,33 +14,41 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 fun main() {
-    var retrofit: AlbumService =
+    val retrofit: AlbumService =
         RetrofitHelper
             .createRetrofitInstance(RetrofitHelper.BaseUrl)
             .create(AlbumService::class.java)
 
     runBlocking {
-        val albumInfo = retrofit.getUserAlbums(3).body() as AlbumInfo
-        for(album in albumInfo)
-            println(album.title)
+        if(false) {
+            val albumInfo = retrofit.getUserAlbums(3).body() as AlbumInfo
+            for(album in albumInfo)
+                println(album.title)
+        }
+
+        val posts = retrofit.getPosts(1, 20).body() as List<PostInfo>
+        for(item in posts) println(item)
     }
 }
-/*
-fun withLiveDataExample(retrofit: AlbumService) {
-    var responseLiveData = liveData {
-        emit(retrofit.getUserAlbums(3).body() as ArrayList<AlbumInfoItem>)
-    }
 
-    responseLiveData.observe(this, Observer {
-
-    })
-}
-*/
 data class AlbumInfoItem(val id: Int = 0, val title: String = "", val userId: Int = 0)
 class AlbumInfo : ArrayList<AlbumInfoItem>()
 data class UserInfo(val id: Int = 0)
+data class PostInfo(var userId: Int = 0, var id: Int = 0, var title: String = "", var body: String = "")
+
+enum class Order(val param: String) {
+    Ascending("asc"),
+    Descending("desc")
+}
 
 interface AlbumService {
+    @GET(value = "/posts/")
+    suspend fun getPosts(@Query(value = "_page") page:Int,
+                         @Query(value = "_limit") limit:Int,
+                         @Query(value = "_sort") sortBy:String = "id",
+                         @Query(value = "_order") order:String = Order.Ascending.param
+        ): Response<List<PostInfo>>
+
     @GET(value = "/albums/")
     suspend fun getAlbums(): Response<AlbumInfo>
 
