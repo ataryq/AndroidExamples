@@ -13,6 +13,4 @@ class PagingFragmentViewModel: ViewModel() {
     private val repo = ItemKeyPagingRepository(albumApi).create(3)
 
     fun getPosts() = repo.flow
-
-    var chosenPost: PostInfo? = null
 }

@@ -1,10 +1,7 @@
 package com.example.melearning
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
-import com.example.melearning.fragments.SharedViewFragment
+import android.os.Bundle
+import androidx.fragment.app.*
 
 class FragmentManagerUtils {
     companion object {
@@ -39,7 +36,7 @@ class FragmentManagerUtils {
         inline fun <reified T: Fragment> fragmentTag() = T::class.java.name
         inline fun <reified T: Fragment> backStackTag() = "${fragmentTag<T>()}:state"
 
-        inline fun <reified T: Fragment> showFragmentWithDefaultAnim(fragmentManager: FragmentManager)
+        inline fun <reified T: Fragment> showFragmentAnimated(fragmentManager: FragmentManager)
         {
             showFragment<T>(fragmentManager,
                 R.anim.enter, R.anim.fade_out,
@@ -65,6 +62,26 @@ class FragmentManagerUtils {
                 addToBackStack(backStackTag<T>())
             }
         }
+        inline fun <reified T: Fragment> showFragment(
+            fragmentManager: FragmentManager,
+            callInTransaction: FragmentTransaction.() -> Unit,
+            bundle: Bundle? = null,
+            container: Int = R.id.fragment_container_view)
+        {
+            if(checkFragmentIsAlreadyAdded<T>(fragmentManager)) {
+                println("fragment class already exist in manager")
+                return
+            }
+
+            fragmentManager.commit(true) {
+                setReorderingAllowed(true)
+                callInTransaction()
+                val className = fragmentTag<T>()
+                replace<T>(container, className, bundle)
+                addToBackStack(backStackTag<T>())
+            }
+        }
+
     }
 }
 

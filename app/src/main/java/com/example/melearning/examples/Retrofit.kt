@@ -1,17 +1,14 @@
 package com.example.melearning.examples
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.asFlow
-import retrofit2.Response
-import retrofit2.http.*
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
-import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.*
 
 fun main() {
     val retrofit: AlbumService =
@@ -34,7 +31,11 @@ fun main() {
 data class AlbumInfoItem(val id: Int = 0, val title: String = "", val userId: Int = 0)
 class AlbumInfo : ArrayList<AlbumInfoItem>()
 data class UserInfo(val id: Int = 0)
-data class PostInfo(var userId: Int = 0, var id: Int = 0, var title: String = "", var body: String = "")
+data class PostInfo(var userId: Int = 0,
+                    var id: Int = 0,
+                    var title: String = "",
+                    var body: String = "",
+                    @Transient var listOrder: Int = -1)
 
 enum class Order(val param: String) {
     Ascending("asc"),

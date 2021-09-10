@@ -1,12 +1,19 @@
 package com.example.melearning
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 
+@Suppress("unused")
 class Utils {
 
     interface Callback {
@@ -15,12 +22,11 @@ class Utils {
 
     companion object {
         fun parseStringToNumber(text: String): Double {
-            var percentText = text
             var retValue = 0.0
-            if(percentText.isEmpty())
+            if (text.isEmpty())
                 return retValue
             try {
-                retValue = percentText.toDouble()
+                retValue = text.toDouble()
             }
             finally {
                 return retValue
@@ -46,5 +52,33 @@ class Utils {
                 return context.resources.getColor(colorRes)
             }
         }
+
+        fun glideLoadImage(imageId: Int, imageView: ImageView, finished: () -> Unit) = Glide.with(imageView)
+            .load(imageId)
+            .listener(object : RequestListener<Drawable?> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any,
+                    target: Target<Drawable?>,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    println("glide loaded")
+                    finished()
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable?,
+                    model: Any,
+                    target: Target<Drawable?>,
+                    dataSource: DataSource,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    println("glide loaded")
+                    finished()
+                    return false
+                }
+            })
+            .into(imageView)
     }
 }

@@ -49,5 +49,12 @@
             android:icon="@drawable/ic_baseline_settings_24"
             android:title="@string/paginating_example"
             app:showAsAction="ifRoom"/>
+
+        <item
+            android:id="@+id/app_bar_buffer"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="@string/buffer"
+            app:showAsAction="ifRoom"/>
+
     </group>
 </menu>

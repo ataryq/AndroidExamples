@@ -8,19 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.melearning.AppThemeController
 import com.example.melearning.FragmentManagerUtils.Companion.checkClassCurrentFragment
 import com.example.melearning.FragmentManagerUtils.Companion.showFragment
-import com.example.melearning.FragmentManagerUtils.Companion.showFragmentWithDefaultAnim
+import com.example.melearning.FragmentManagerUtils.Companion.showFragmentAnimated
 import com.example.melearning.R
 import com.example.melearning.di.ActivityDaggerComponent
 import com.example.melearning.di.MyViewModel
 import com.example.melearning.fragments.AnimationFragment
 import com.example.melearning.fragments.SettingsFragment
-import com.example.melearning.fragments.SharedViewFragment
 import com.example.melearning.fragments.calculation.CalculationFragment
 import com.example.melearning.fragments.cicerone.CiceroneBaseFragment
 import com.example.melearning.fragments.rx_fragment.RxFragment
 import com.example.custom_ui.KeyboardController
 import com.example.melearning.fragments.ShimmeringExampleFragment
 import com.example.melearning.fragments.paging.PagingFragment
+import com.example.melearning.fragments.shared_elems.SimpleSharedFragment
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.Module
 import dagger.Provides
@@ -85,19 +85,19 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.app_bar_shared_fragment -> {
-                    showFragmentWithDefaultAnim<SharedViewFragment>(supportFragmentManager)
+                    showFragmentAnimated<SimpleSharedFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_animation_fragment -> {
-                    showFragmentWithDefaultAnim<AnimationFragment>(supportFragmentManager)
+                    showFragmentAnimated<AnimationFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_rx_fragment -> {
-                    showFragmentWithDefaultAnim<RxFragment>(supportFragmentManager)
+                    showFragmentAnimated<RxFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_cicerone_example -> {
-                    showFragmentWithDefaultAnim<CiceroneBaseFragment>(supportFragmentManager)
+                    showFragmentAnimated<CiceroneBaseFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_tests -> {
@@ -105,11 +105,14 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.app_bar_shimmering_example -> {
-                    showFragmentWithDefaultAnim<ShimmeringExampleFragment>(supportFragmentManager)
+                    showFragmentAnimated<ShimmeringExampleFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_paginating_example -> {
-                    showFragmentWithDefaultAnim<PagingFragment>(supportFragmentManager)
+                    showFragmentAnimated<PagingFragment>(supportFragmentManager)
+                    true
+                }
+                R.id.app_bar_buffer -> {
                     true
                 }
 
