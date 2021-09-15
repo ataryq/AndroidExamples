@@ -25,14 +25,15 @@ class PagingDetailedItemFragment: BaseSharedFragment<PagingItemDetailedFragmentB
     }
 
     private fun initSharedFragment() {
+        val postfix = getSharedData<PostInfo>()?.id ?: ""
+
         println("[to] init shared")
         initSharedFragmentTo(
             mapOf(
-                PagingFragment.ImageTransitionName to binding.pagingDetItemImage,
-                PagingFragment.TitleTransitionName to binding.pagingDetItemTitle,
-                PagingFragment.ContentTransitionName to binding.pagingDetItemContent,
-                PagingFragment.CardTransitionName to binding.detCardHolder,
-                PagingFragment.DividerTransitionName to binding.pagingDetTitleDivider
+                PagingFragment.ImageTransitionName + postfix to binding.pagingDetItemImage,
+                PagingFragment.TitleTransitionName + postfix to binding.pagingDetItemTitle,
+                PagingFragment.CardTransitionName + postfix to binding.detCardHolder,
+                PagingFragment.DividerTransitionName + postfix to binding.pagingDetTitleDivider
             ),
             R.transition.enter_shared_image)
     }

@@ -5,7 +5,6 @@ import android.view.View
 import androidx.core.app.SharedElementCallback
 import androidx.viewbinding.ViewBinding
 import com.example.melearning.FragmentManagerUtils
-import com.example.melearning.R
 import com.example.melearning.fragments.paging.PagingDetailedItemFragment
 
 @Suppress("MemberVisibilityCanBePrivate", "UNUSED_PARAMETER")
@@ -25,18 +24,16 @@ abstract class BaseSharedFragment<T: ViewBinding>(
         }
     }
 
-    open fun initSharedFragmentFrom(map: Map<String, View>, exitTransitionId: Int) {
+    open fun initSharedFragmentFrom(map: Map<String, View>,
+                                    exitTransitionId: Int) {
         activityViewModel.sharedAnyData = null
 
         exitTransition = getTransition(exitTransitionId)
-        excludeViewsFromTranslation(exitTransition as Transition)
-
-        sharedElementEnterTransition = getTransition(R.transition.enter_shared_image)
-//        excludeViewsFromTranslation(sharedElementEnterTransition as Transition)
 
         setSharedElements(map)
+//        excludeViewsFromTranslation(exitTransition as Transition)
+
         setExitSharedElementCallback(createSharedCallback("from"))
-        setEnterSharedElementCallback(createSharedCallback("from"))
 
         if(controlPostpone) {
             startPostponedEnterTransition()
@@ -45,10 +42,9 @@ abstract class BaseSharedFragment<T: ViewBinding>(
 
     open fun initSharedFragmentTo(map: Map<String, View>, sharedTransitionId: Int) {
         sharedElementEnterTransition = getTransition(sharedTransitionId)
-        excludeViewsFromTranslation(sharedElementEnterTransition as Transition)
+
         setSharedElements(map)
         setEnterSharedElementCallback(createSharedCallback("to"))
-        setExitSharedElementCallback(createSharedCallback("to"))
         if(controlPostpone) {
             startPostponedEnterTransition()
         }
@@ -93,9 +89,9 @@ abstract class BaseSharedFragment<T: ViewBinding>(
             sharedElements: MutableMap<String?, View?>)
         {
             for(name in names) {
-//                println("[$tag] SharedElementCallback name: $name")
+                println("[$tag] SharedElementCallback name: $name")
                 if(_sharedViews.containsKey(name)) {
-//                    println("[$tag] elem found: ${_sharedViews[name]?.transitionName}")
+                    println("[$tag] elem found: ${_sharedViews[name]}")
                     sharedElements[name] = _sharedViews[name]
                 }
             }

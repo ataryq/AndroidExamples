@@ -19,6 +19,7 @@ import com.example.melearning.fragments.cicerone.CiceroneBaseFragment
 import com.example.melearning.fragments.rx_fragment.RxFragment
 import com.example.custom_ui.KeyboardController
 import com.example.melearning.fragments.ShimmeringExampleFragment
+import com.example.melearning.fragments.paginating_sample.LightPaginating
 import com.example.melearning.fragments.paging.PagingFragment
 import com.example.melearning.fragments.shared_elems.SimpleSharedFragment
 import com.google.android.material.appbar.MaterialToolbar
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.app_bar_shared_fragment -> {
-                    showFragmentAnimated<SimpleSharedFragment>(supportFragmentManager)
+                    showFragmentAnimated<PagingFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_animation_fragment -> {
@@ -109,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.app_bar_paginating_example -> {
-                    showFragmentAnimated<PagingFragment>(supportFragmentManager)
+                    showFragmentAnimated<LightPaginating>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_buffer -> {

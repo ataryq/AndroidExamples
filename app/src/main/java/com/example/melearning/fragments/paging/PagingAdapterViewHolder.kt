@@ -6,18 +6,22 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.melearning.R
+import com.example.melearning.databinding.PagingItemBinding
 import com.example.melearning.examples.PostInfo
 
 class PagingAdapterViewHolder(view: View): RecyclerView.ViewHolder(view) {
     lateinit var postInfo: PostInfo
+    val binding = PagingItemBinding.bind(view)
 
     fun bind(postInfo: PostInfo, listener: PagingPostsListener) {
         if(postInfo.title.length > 25)
             postInfo.title = postInfo.title.substring(0, 25)
+
         this.postInfo = postInfo
-        titleView().text = postInfo.title
-        contextView().text = postInfo.body
-        cardView().setOnClickListener {
+
+        binding.pagingItemTitle.text = postInfo.title
+        binding.pagingItemContent.text = postInfo.body
+        binding.pagingCardHolder.setOnClickListener {
             listener.onClick(this)
         }
         listener.onLoaded(this)

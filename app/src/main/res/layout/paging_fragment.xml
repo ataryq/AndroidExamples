@@ -32,11 +32,10 @@
                     android:orientation="vertical">
 
                     <include layout="@layout/paging_item_shimmering" />
-
                     <include layout="@layout/paging_item_shimmering" />
-
                     <include layout="@layout/paging_item_shimmering" />
-
+                    <include layout="@layout/paging_item_shimmering" />
+                    <include layout="@layout/paging_item_shimmering" />
                     <include layout="@layout/paging_item_shimmering" />
 
                 </LinearLayout>

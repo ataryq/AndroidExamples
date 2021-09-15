@@ -86,7 +86,7 @@ class RetrofitHelper {
         fun createRetrofitInstance(url: String): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(url)
-                .client(createOkHttpClient())
+//                .client(createOkHttpClient())
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()

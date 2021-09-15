@@ -2,20 +2,18 @@ package com.example.melearning.fragments.paging
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewTreeObserver
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.RecyclerView
 import com.example.custom_ui.UiUtils
 import com.example.melearning.R
 import com.example.melearning.databinding.PagingFragmentBinding
 import com.example.melearning.examples.PostInfo
 import com.example.melearning.fragments.BaseSharedFragment
 import kotlinx.coroutines.flow.collectLatest
-
+import kotlinx.coroutines.launch
 
 class PagingFragment:
     BaseSharedFragment<PagingFragmentBinding>(false),
@@ -40,13 +38,8 @@ class PagingFragment:
         super.onViewCreated(view, savedInstanceState)
 
         if(getSharedData<PostInfo>() != null) {
+            println("postponeEnterTransition")
             postponeEnterTransition()
-        }
-        dataLoaded.observe(viewLifecycleOwner) {
-            println("dataLoaded: $it")
-            if(it) {
-//                startPostponedEnterTransition()
-            }
         }
 
         initSwipeRefresh()
@@ -66,15 +59,15 @@ class PagingFragment:
     }
 
     private fun initList() {
-        binding.list.adapter = adapter//.withLoadStateFooter()
+        binding.list.adapter = adapter.withLoadStateHeader(HeaderListAdapter())
 
-        lifecycleScope.launchWhenCreated {
+        binding.list.scrollBy(0, 1)
+
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getPosts().collectLatest {
-                adapter.submitData(it)
+                adapter.submitData(viewLifecycleOwner.lifecycle, it)
             }
         }
-
-        scrollToPosition()
     }
 
     private fun isDataLoaded(loadStates: CombinedLoadStates): Boolean {
@@ -98,44 +91,17 @@ class PagingFragment:
         }
     }
 
-    private fun scrollToPosition() {
-        binding.list.addOnLayoutChangeListener(object : View.OnLayoutChangeListener {
-            override fun onLayoutChange(
-                v: View,
-                left: Int,
-                top: Int,
-                right: Int,
-                bottom: Int,
-                oldLeft: Int,
-                oldTop: Int,
-                oldRight: Int,
-                oldBottom: Int
-            ) {
-                binding.list.removeOnLayoutChangeListener(this)
-                val layoutManager: RecyclerView.LayoutManager? = binding.list.layoutManager
-                if(lastChosenItemOrder < 0) return
-                val viewAtPosition = layoutManager?.findViewByPosition(lastChosenItemOrder)
-                // Scroll to position if the view for the current position is null (not currently part of
-                // layout manager children), or it's not completely visible.
-                if (viewAtPosition == null ||
-                    layoutManager.isViewPartiallyVisible(
-                        viewAtPosition, false, true))
-                        {
-                            binding.list.post {
-                                println("scroll to position: $lastChosenItemOrder")
-                                layoutManager?.scrollToPosition(lastChosenItemOrder)
-                            }
-                        }
-            }
-        })
-    }
-
     override fun onLoaded(item: PagingAdapterViewHolder) {
+//        println("onLoaded sharedData is null: ${getSharedData<PostInfo>() == null}")
+
         val sharedData = getSharedData<PostInfo>() ?: return
+
+//        println("sharedData id = ${sharedData.id} item id = ${item.postInfo.id}")
 
         if(item.postInfo.id == sharedData.id) {
             lastChosenItemOrder = sharedData.listOrder
-            println("item found at position: $lastChosenItemOrder")
+            println("item with id = ${sharedData.id} found at position: $lastChosenItemOrder")
+
             initShared(item)
             startPostponedEnterTransition()
         }
@@ -146,18 +112,20 @@ class PagingFragment:
 
         if(!(dataLoaded.value as Boolean)) return
 
+        binding.list.scrollBy(0, 1)
         initShared(chosenItem)
         showSharedFragment(chosenItem.postInfo)
     }
 
     private fun initShared(chosenItem: PagingAdapterViewHolder) {
+        val postfix = chosenItem.postInfo.id
+
         initSharedFragmentFrom(
             mapOf(
-                ImageTransitionName to chosenItem.imageView(),
-                TitleTransitionName to chosenItem.titleView(),
-                ContentTransitionName to chosenItem.contextView(),
-                CardTransitionName to chosenItem.cardView(),
-                DividerTransitionName to chosenItem.titleDividerView()
+                ImageTransitionName + postfix to chosenItem.binding.pagingItemImage,
+                TitleTransitionName + postfix to chosenItem.binding.pagingItemTitle,
+                CardTransitionName + postfix to chosenItem.binding.pagingCardHolder,
+                DividerTransitionName + postfix to chosenItem.binding.pagingTitleDivider
             ),
             R.transition.grid_exit_transition)
     }

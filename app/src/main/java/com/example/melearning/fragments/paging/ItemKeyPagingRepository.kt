@@ -11,6 +11,7 @@ class ItemKeyPagingRepository(private val api: AlbumService) {
             enablePlaceholders = false
         )
     ) {
+        println("ItemKeyPagingRepository: create")
         ItemKeyPagingLoader(api)
-    }
+    }.flow
 }
