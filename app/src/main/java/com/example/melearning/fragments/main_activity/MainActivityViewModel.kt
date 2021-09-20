@@ -5,5 +5,5 @@ import androidx.lifecycle.ViewModel
 
 class MainActivityViewModel: ViewModel() {
     val backIconVisible = MutableLiveData(false)
-    var sharedAnyData: Any? = null
+    var mapSharedData = mapOf<String, Any>()
 }

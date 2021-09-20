@@ -18,10 +18,10 @@ import com.example.melearning.fragments.calculation.CalculationFragment
 import com.example.melearning.fragments.cicerone.CiceroneBaseFragment
 import com.example.melearning.fragments.rx_fragment.RxFragment
 import com.example.custom_ui.KeyboardController
+import com.example.melearning.fragments.popup.PopupWindowFragment
 import com.example.melearning.fragments.ShimmeringExampleFragment
 import com.example.melearning.fragments.paginating_sample.LightPaginating
-import com.example.melearning.fragments.paging.PagingFragment
-import com.example.melearning.fragments.shared_elems.SimpleSharedFragment
+import com.example.melearning.fragments.paging.view.PagingFragment
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.Module
 import dagger.Provides
@@ -114,6 +114,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.app_bar_buffer -> {
+                    showFragmentAnimated<PopupWindowFragment>(supportFragmentManager)
                     true
                 }
 

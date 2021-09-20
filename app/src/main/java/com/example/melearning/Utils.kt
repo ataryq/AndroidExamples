@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -53,8 +54,45 @@ class Utils {
             }
         }
 
-        fun glideLoadImage(imageId: Int, imageView: ImageView, finished: () -> Unit) = Glide.with(imageView)
+        fun <T>glideLoadImage(imageId: T,
+                              imageView: ImageView,
+                              finished: () -> Unit = {})
+            = Glide.with(imageView)
             .load(imageId)
+            .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+            .listener(object : RequestListener<Drawable?> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any,
+                    target: Target<Drawable?>,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    println("glide loaded")
+                    finished()
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable?,
+                    model: Any,
+                    target: Target<Drawable?>,
+                    dataSource: DataSource,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    println("glide loaded")
+                    finished()
+                    return false
+                }
+            })
+            .into(imageView)
+
+        fun <T>glideLoadImage(imageId: T,
+                              context: Fragment,
+                              imageView: ImageView,
+                              finished: () -> Unit = {})
+                = Glide.with(context)
+            .load(imageId)
+            .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
             .listener(object : RequestListener<Drawable?> {
                 override fun onLoadFailed(
                     e: GlideException?,

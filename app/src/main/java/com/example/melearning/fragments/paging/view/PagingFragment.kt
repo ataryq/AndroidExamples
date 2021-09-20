@@ -1,4 +1,4 @@
-package com.example.melearning.fragments.paging
+package com.example.melearning.fragments.paging.view
 
 import android.os.Bundle
 import android.view.View
@@ -12,6 +12,12 @@ import com.example.melearning.R
 import com.example.melearning.databinding.PagingFragmentBinding
 import com.example.melearning.examples.PostInfo
 import com.example.melearning.fragments.BaseSharedFragment
+import com.example.melearning.fragments.paging.PagingFragmentViewModel
+import com.example.melearning.fragments.paging.PostData
+import com.example.melearning.fragments.paging.adapter.HeaderListAdapter
+import com.example.melearning.fragments.paging.adapter.PagingAdapter
+import com.example.melearning.fragments.paging.adapter.PagingAdapterViewHolder
+import com.example.melearning.fragments.paging.adapter.PagingPostsListener
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -22,9 +28,12 @@ class PagingFragment:
     companion object {
         const val ImageTransitionName = "shared_image"
         const val TitleTransitionName = "shared_title"
-        const val ContentTransitionName = "shared_content"
         const val CardTransitionName = "shared_card"
         const val DividerTransitionName = "shared_divider"
+        const val ContentTransitionName = "shared_content"
+
+        const val DrawableSharedParamName = "shared_placeholder"
+        const val DataSharedParamName = "shared_data"
     }
 
     private val adapter = PagingAdapter(this)
@@ -37,7 +46,7 @@ class PagingFragment:
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(getSharedData<PostInfo>() != null) {
+        if(getSharedData<PostInfo>(DataSharedParamName) != null) {
             println("postponeEnterTransition")
             postponeEnterTransition()
         }
@@ -94,13 +103,13 @@ class PagingFragment:
     override fun onLoaded(item: PagingAdapterViewHolder) {
 //        println("onLoaded sharedData is null: ${getSharedData<PostInfo>() == null}")
 
-        val sharedData = getSharedData<PostInfo>() ?: return
+        val sharedData = getSharedData<PostData>(DataSharedParamName) ?: return
 
 //        println("sharedData id = ${sharedData.id} item id = ${item.postInfo.id}")
 
-        if(item.postInfo.id == sharedData.id) {
-            lastChosenItemOrder = sharedData.listOrder
-            println("item with id = ${sharedData.id} found at position: $lastChosenItemOrder")
+        if(item.postData.postInfo.id == sharedData.postInfo.id) {
+            lastChosenItemOrder = sharedData.postInfo.listOrder
+            println("item with id = ${sharedData.postInfo.id} found at position: $lastChosenItemOrder")
 
             initShared(item)
             startPostponedEnterTransition()
@@ -114,18 +123,24 @@ class PagingFragment:
 
         binding.list.scrollBy(0, 1)
         initShared(chosenItem)
-        showSharedFragment(chosenItem.postInfo)
+
+        showSharedFragment(mapOf<String, Any>(
+            DataSharedParamName to chosenItem.postData,
+            DrawableSharedParamName to chosenItem.binding.pagingItemImage.drawable
+        ))
     }
 
     private fun initShared(chosenItem: PagingAdapterViewHolder) {
-        val postfix = chosenItem.postInfo.id
+        val postfix = chosenItem.postData.postInfo.id
+        val binding = chosenItem.binding
 
         initSharedFragmentFrom(
             mapOf(
-                ImageTransitionName + postfix to chosenItem.binding.pagingItemImage,
-                TitleTransitionName + postfix to chosenItem.binding.pagingItemTitle,
-                CardTransitionName + postfix to chosenItem.binding.pagingCardHolder,
-                DividerTransitionName + postfix to chosenItem.binding.pagingTitleDivider
+                ImageTransitionName + postfix to binding.pagingItemImage,
+                TitleTransitionName + postfix to binding.pagingItemTitle,
+                CardTransitionName + postfix to binding.pagingCardHolder,
+                DividerTransitionName + postfix to binding.pagingTitleDivider,
+                ContentTransitionName + postfix to binding.pagingItemContent
             ),
             R.transition.grid_exit_transition)
     }

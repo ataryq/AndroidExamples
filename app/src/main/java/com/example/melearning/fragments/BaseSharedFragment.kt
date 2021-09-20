@@ -5,7 +5,7 @@ import android.view.View
 import androidx.core.app.SharedElementCallback
 import androidx.viewbinding.ViewBinding
 import com.example.melearning.FragmentManagerUtils
-import com.example.melearning.fragments.paging.PagingDetailedItemFragment
+import com.example.melearning.fragments.paging.view.PagingDetailedItemFragment
 
 @Suppress("MemberVisibilityCanBePrivate", "UNUSED_PARAMETER")
 abstract class BaseSharedFragment<T: ViewBinding>(
@@ -17,7 +17,7 @@ abstract class BaseSharedFragment<T: ViewBinding>(
     override fun onCreateViewEnd() {
         super.onCreateViewEnd()
 
-        if(activityViewModel.sharedAnyData != null) {
+        if(activityViewModel.mapSharedData.isEmpty()) {
             if(controlPostpone) {
                 postponeEnterTransition()
             }
@@ -26,7 +26,7 @@ abstract class BaseSharedFragment<T: ViewBinding>(
 
     open fun initSharedFragmentFrom(map: Map<String, View>,
                                     exitTransitionId: Int) {
-        activityViewModel.sharedAnyData = null
+        activityViewModel.mapSharedData = mapOf()
 
         exitTransition = getTransition(exitTransitionId)
 
@@ -56,8 +56,8 @@ abstract class BaseSharedFragment<T: ViewBinding>(
         }
     }
 
-    fun showSharedFragment(data: Any?) {
-        activityViewModel.sharedAnyData = data
+    fun showSharedFragment(mapSharedData: Map<String, Any>) {
+        activityViewModel.mapSharedData = mapSharedData
 
         FragmentManagerUtils.showFragment<PagingDetailedItemFragment>(parentFragmentManager, {
             for(item in sharedViews) {
@@ -67,7 +67,7 @@ abstract class BaseSharedFragment<T: ViewBinding>(
     }
 
     @Suppress("UNCHECKED_CAST")
-    fun <T> getSharedData() = activityViewModel.sharedAnyData as T?
+    fun <T> getSharedData(paramName: String) = activityViewModel.mapSharedData[paramName] as T?
 
     private fun setSharedElements(map: Map<String, View>) {
         sharedViews = map

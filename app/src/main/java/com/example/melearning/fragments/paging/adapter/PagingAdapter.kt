@@ -1,27 +1,27 @@
-package com.example.melearning.fragments.paging
+package com.example.melearning.fragments.paging.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.melearning.R
-import com.example.melearning.examples.PostInfo
+import com.example.melearning.fragments.paging.PostData
 
 class PagingAdapter(private val listener: PagingPostsListener):
-    PagingDataAdapter<PostInfo, PagingAdapterViewHolder>(PostComparator) {
+    PagingDataAdapter<PostData, PagingAdapterViewHolder>(PostComparator) {
     companion object {
-        val PostComparator = object : DiffUtil.ItemCallback<PostInfo>() {
-            override fun areContentsTheSame(oldItem: PostInfo, newItem: PostInfo): Boolean =
+        val PostComparator = object : DiffUtil.ItemCallback<PostData>() {
+            override fun areContentsTheSame(oldItem: PostData, newItem: PostData): Boolean =
                 oldItem == newItem
 
-            override fun areItemsTheSame(oldItem: PostInfo, newItem: PostInfo): Boolean =
-                oldItem.id == newItem.id
+            override fun areItemsTheSame(oldItem: PostData, newItem: PostData): Boolean =
+                oldItem.postInfo.id == newItem.postInfo.id
         }
     }
 
     override fun onBindViewHolder(holder: PagingAdapterViewHolder, position: Int) {
         getItem(position)?.let {
-            it.listOrder = position
+            it.order = position
             holder.bind(it, listener)
         }
     }

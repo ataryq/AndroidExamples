@@ -31,11 +31,20 @@ fun main() {
 data class AlbumInfoItem(val id: Int = 0, val title: String = "", val userId: Int = 0)
 class AlbumInfo : ArrayList<AlbumInfoItem>()
 data class UserInfo(val id: Int = 0)
+
 data class PostInfo(var userId: Int = 0,
                     var id: Int = 0,
                     var title: String = "",
                     var body: String = "",
+                    //means it will not be used in retrofit, just internal needs
                     @Transient var listOrder: Int = -1)
+
+data class ImageInfo(var albumId: Int = 0,
+                     var id: Int = 0,
+                     var title: String = "",
+                     var url: String = "",
+                     var thumbnailUrl: String = "",
+                     @Transient var listOrder: Int = -1)
 
 enum class Order(val param: String) {
     Ascending("asc"),
@@ -49,6 +58,9 @@ interface AlbumService {
                          @Query(value = "_sort") sortBy:String = "id",
                          @Query(value = "_order") order:String = Order.Ascending.param
         ): Response<List<PostInfo>>
+
+    @GET(value = "/photos/")
+    suspend fun getPhoto(@Query(value = "id") id:Int): Response<List<ImageInfo>>
 
     @GET(value = "/albums/")
     suspend fun getAlbums(): Response<AlbumInfo>
@@ -74,6 +86,8 @@ interface AlbumService {
 
 class RetrofitHelper {
     companion object {
+        //see documentation
+        //https://jsonplaceholder.typicode.com/
         const val BaseUrl = "https://jsonplaceholder.cypress.io/"
 
         private fun createInterceptor() = HttpLoggingInterceptor()

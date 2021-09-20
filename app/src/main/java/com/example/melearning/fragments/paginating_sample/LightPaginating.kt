@@ -1,22 +1,28 @@
 package com.example.melearning.fragments.paginating_sample
 
 import android.view.View
+import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.melearning.FragmentManagerUtils
 import com.example.melearning.R
 import com.example.melearning.databinding.PagingFragmentBinding
 import com.example.melearning.fragments.BaseBindFragment
-import com.example.melearning.fragments.paging.PagingAdapter
-import com.example.melearning.fragments.paging.PagingAdapterViewHolder
+import com.example.melearning.fragments.paging.adapter.PagingAdapter
+import com.example.melearning.fragments.paging.adapter.PagingAdapterViewHolder
 import com.example.melearning.fragments.paging.PagingFragmentViewModel
-import com.example.melearning.fragments.paging.PagingPostsListener
+import com.example.melearning.fragments.paging.adapter.PagingPostsListener
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+
 
 class LightPaginating:
     BaseBindFragment<PagingFragmentBinding>(),
     PagingPostsListener {
+
+    companion object {
+        const val SharedDataTransitionName = "shared_data"
+    }
 
     private var adapter = PagingAdapter(this)
 
@@ -25,7 +31,6 @@ class LightPaginating:
     override fun layoutId() = R.layout.paging_fragment
 
     override fun onCreateViewEnd() {
-//        binding.list.layoutManager = LinearLayoutManagerExt("name", this, adapter)
         binding.list.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -48,7 +53,9 @@ class LightPaginating:
     }
 
     override fun onClick(chosenItem: PagingAdapterViewHolder) {
-        activityViewModel.sharedAnyData = chosenItem.postInfo
+        activityViewModel.mapSharedData =
+            mapOf(SharedDataTransitionName to chosenItem.postData.postInfo)
+
         FragmentManagerUtils.showFragment<LightDetailedPaginating>(parentFragmentManager)
     }
 

@@ -6,16 +6,11 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.SharedElementCallback
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.melearning.FragmentManagerUtils
-import com.example.melearning.R
 import com.example.melearning.fragments.main_activity.MainActivityViewModel
-import com.example.melearning.fragments.paging.PagingDetailedItemFragment
-import com.example.melearning.fragments.paging.PagingFragment
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseFragment: Fragment() {
@@ -23,6 +18,7 @@ abstract class BaseFragment: Fragment() {
     abstract fun setBinding(binding: ViewDataBinding)
     protected val activityViewModel: MainActivityViewModel by activityViewModels()
     protected val disposable = CompositeDisposable()
+    protected var onViewCreatedLambda: () -> Unit = {}
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +34,12 @@ abstract class BaseFragment: Fragment() {
         setBinding(binding)
 
         onCreateViewEnd()
+        onViewCreatedLambda()
         return binding.root
+    }
+
+    fun onViewCreatedEnd(initLambda: () -> Unit) {
+        this.onViewCreatedLambda = initLambda
     }
 
     open fun onCreateViewEnd() {}

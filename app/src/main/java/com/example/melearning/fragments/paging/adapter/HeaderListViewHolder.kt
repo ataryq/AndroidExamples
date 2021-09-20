@@ -1,4 +1,4 @@
-package com.example.melearning.fragments.paging
+package com.example.melearning.fragments.paging.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
