@@ -18,8 +18,9 @@ import com.example.melearning.fragments.calculation.CalculationFragment
 import com.example.melearning.fragments.cicerone.CiceroneBaseFragment
 import com.example.melearning.fragments.rx_fragment.RxFragment
 import com.example.custom_ui.KeyboardController
-import com.example.melearning.fragments.popup.PopupWindowFragment
+import com.example.melearning.fragments.bottom_shirt.BottomShirtWindowFragment
 import com.example.melearning.fragments.ShimmeringExampleFragment
+import com.example.melearning.fragments.moxy.MoxyFragment
 import com.example.melearning.fragments.paginating_sample.LightPaginating
 import com.example.melearning.fragments.paging.view.PagingFragment
 import com.google.android.material.appbar.MaterialToolbar
@@ -113,8 +114,16 @@ class MainActivity : AppCompatActivity() {
                     showFragmentAnimated<LightPaginating>(supportFragmentManager)
                     true
                 }
+                R.id.app_bar_bottom_shirt -> {
+                    showFragmentAnimated<BottomShirtWindowFragment>(supportFragmentManager)
+                    true
+                }
+                R.id.app_bar_moxy -> {
+                    showFragmentAnimated<MoxyFragment>(supportFragmentManager)
+                    true
+                }
                 R.id.app_bar_buffer -> {
-                    showFragmentAnimated<PopupWindowFragment>(supportFragmentManager)
+//                    showFragmentAnimated<BottomShirtWindowFragment>(supportFragmentManager)
                     true
                 }
 

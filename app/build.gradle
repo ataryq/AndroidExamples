@@ -103,6 +103,13 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
 
+    // Moxy
+    def moxy_versions = "2.2.2"
+    implementation "com.github.moxy-community:moxy:$moxy_versions"
+    implementation "com.github.moxy-community:moxy-androidx:$moxy_versions"
+    kapt "com.github.moxy-community:moxy-compiler:$moxy_versions"
+
+    //others
     implementation "com.github.terrakok:cicerone:7.1"
     implementation "com.facebook.shimmer:shimmer:0.5.0"
     implementation "androidx.paging:paging-runtime-ktx:3.0.1"

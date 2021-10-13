@@ -1,4 +1,4 @@
-package com.example.melearning.fragments.popup
+package com.example.melearning.fragments.bottom_shirt
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -14,8 +14,8 @@ import androidx.transition.TransitionManager
 import com.example.melearning.R
 
 @Suppress("unused")
-class PopupChangingHeight(private val activity: FragmentActivity,
-                          private val rootLayout: ViewGroup) {
+class BottomShirtChangingHeight(private val activity: FragmentActivity,
+                                private val rootLayout: ViewGroup) {
 
     private fun showParams(rootView: View, view: View) {
         val array: IntArray = intArrayOf(0, 0)

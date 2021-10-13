@@ -43,4 +43,8 @@
     <string name="buffer">Buffer</string>
     <string name="show_popup">Show popup</string>
     <string name="dismiss">Dismiss</string>
+    <string name="write_comment">Write comment</string>
+    <string name="bottom_shirt">Bottom shirt</string>
+    <string name="hello_moxy">Hello Moxy!</string>
+    <string name="moxy_example">Moxy example</string>
 </resources>

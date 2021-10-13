@@ -13,11 +13,12 @@ import androidx.fragment.app.activityViewModels
 import com.example.melearning.fragments.main_activity.MainActivityViewModel
 import io.reactivex.disposables.CompositeDisposable
 
-abstract class BaseFragment: Fragment() {
+abstract class BaseFragment(private val enableDebugLog: Boolean = true): Fragment() {
     abstract fun layoutId(): Int
     abstract fun setBinding(binding: ViewDataBinding)
     protected val activityViewModel: MainActivityViewModel by activityViewModels()
     protected val disposable = CompositeDisposable()
+
     protected var onViewCreatedLambda: () -> Unit = {}
 
     override fun onCreateView(
@@ -43,6 +44,12 @@ abstract class BaseFragment: Fragment() {
     }
 
     open fun onCreateViewEnd() {}
+
+    fun debugPrintln(message: Any?) {
+        if(enableDebugLog) {
+            println(message)
+        }
+    }
 
     fun getTransition(transactionId: Int): Transition =
         TransitionInflater.from(requireContext()).inflateTransition(transactionId)
