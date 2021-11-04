@@ -6,19 +6,19 @@
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryDark">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/activity_toolbar"
-        style="?attr/bottomAppBarStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
+        style="@style/Toolbar"
+        android:theme="@style/MyBottomAppBar"
+        app:popupTheme="@style/ThemeOverlay.BottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/top_bar_menu"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24"
-        app:tint="?attr/colorAccent" />
+        />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"

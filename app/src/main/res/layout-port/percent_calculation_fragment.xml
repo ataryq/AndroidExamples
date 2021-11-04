@@ -145,7 +145,8 @@
                 app:fabCradleRoundedCornerRadius="8dp"
                 app:menu="@menu/bottom_app_bar_menu"
                 app:navigationIcon="@drawable/baseline_menu_white_24"
-                style="?attr/bottomAppBarStyle"/>
+                style="?attr/bottomAppBarStyle"
+                />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/saveResultButton"

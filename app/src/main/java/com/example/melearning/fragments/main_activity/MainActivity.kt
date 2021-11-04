@@ -1,10 +1,12 @@
 package com.example.melearning.fragments.main_activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.example.melearning.AppThemeController
 import com.example.melearning.FragmentManagerUtils.Companion.checkClassCurrentFragment
 import com.example.melearning.FragmentManagerUtils.Companion.showFragment
@@ -18,15 +20,17 @@ import com.example.melearning.fragments.calculation.CalculationFragment
 import com.example.melearning.fragments.cicerone.CiceroneBaseFragment
 import com.example.melearning.fragments.rx_fragment.RxFragment
 import com.example.custom_ui.KeyboardController
+import com.example.melearning.fragments.ScrollableFragment
 import com.example.melearning.fragments.bottom_shirt.BottomShirtWindowFragment
 import com.example.melearning.fragments.ShimmeringExampleFragment
 import com.example.melearning.fragments.moxy.MoxyFragment
 import com.example.melearning.fragments.paginating_sample.LightPaginating
 import com.example.melearning.fragments.paging.view.PagingFragment
-import com.google.android.material.appbar.MaterialToolbar
 import dagger.Module
 import dagger.Provides
 import org.koin.android.viewmodel.ext.android.viewModel
+import android.view.Menu
+
 
 @Module
 class MainActivity : AppCompatActivity() {
@@ -68,8 +72,16 @@ class MainActivity : AppCompatActivity() {
             viewModel.backIconVisible.postValue(isNotHome)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_bar_menu, menu)
+        return true
+    }
+
+    @SuppressLint("UseSupportActionBar")
     private fun setupTopAppBar() {
-        val toolbar = findViewById<MaterialToolbar>(R.id.activity_toolbar)
+        val toolbar = findViewById<Toolbar>(R.id.activity_toolbar)
+        setSupportActionBar(toolbar)
+
         toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -123,7 +135,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.app_bar_buffer -> {
-//                    showFragmentAnimated<BottomShirtWindowFragment>(supportFragmentManager)
+                    showFragmentAnimated<ScrollableFragment>(supportFragmentManager)
                     true
                 }
 
