@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigate_graph"
+    app:startDestination="@id/navHomeFragment">
+
+    <fragment
+        android:id="@+id/navHomeFragment"
+        android:name="com.example.melearning.fragments.navigate_graph.HomeNavigateFragment"
+        android:label="HomeNavigateFragment" >
+        <action
+            android:id="@+id/action_homeNavigateFragment_self"
+            app:destination="@id/navHomeFragment" />
+        <action
+            android:id="@+id/action_homeNavigateFragment_to_navigation"
+            app:destination="@id/navSharedFragment" />
+        <action
+            android:id="@+id/action_homeNavigateFragment_to_animationFragment2"
+            app:destination="@id/navAnimationFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
+    <navigation android:id="@+id/navSharedFragment"
+        app:startDestination="@id/nestedNavigationFragment">
+        <fragment
+            android:id="@+id/nestedNavigationFragment"
+            android:name="com.example.melearning.fragments.navigate_graph.NestedNavigationFragment"
+            android:label="NestedNavigationFragment" >
+            <action
+                android:id="@+id/action_nested_to_rx"
+                app:destination="@id/rxFragment2"
+                app:enterAnim="@anim/move_in_left"
+                app:exitAnim="@anim/move_in_left" />
+        </fragment>
+        <fragment
+            android:id="@+id/rxFragment2"
+            android:name="com.example.melearning.fragments.rx_fragment.RxFragment"
+            android:label="RxFragment" />
+    </navigation><action android:id="@+id/action_global_homeNavigateFragment" app:destination="@id/navHomeFragment"/>
+    <fragment
+        android:id="@+id/navAnimationFragment"
+        android:name="com.example.melearning.fragments.animation.AnimationFragment"
+        android:label="AnimationFragment" />
+</navigation>

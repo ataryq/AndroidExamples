@@ -20,7 +20,6 @@
     <string name="no">NO</string>
     <integer name="com_vk_sdk_AppId">7748518</integer>
     <string name="theme_store_key">use_dark_theme</string>
-    <string name="back">back</string>
     <string name="hide">hide</string>
     <string name="show">show</string>
     <string name="test_fragment_1">Test fragment 1</string>
@@ -137,4 +136,11 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="todo">TODO</string>
+    <string name="scroll_header">Scroll header</string>
+    <string name="navigation_graph">Navigation graph</string>
+    <string name="home">home</string>
+    <string name="animation">animation</string>
+    <string name="go_to_rx">go to rx</string>
+    <string name="back">back</string>
+    <string name="up">up</string>
 </resources>

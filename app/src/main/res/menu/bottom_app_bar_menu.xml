@@ -6,8 +6,7 @@
         android:id="@+id/app_bar_clear_table"
         android:icon="@drawable/baseline_delete_white_24"
         android:title="@string/search"
-        app:showAsAction="ifRoom"/>
-
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/app_bar_hide"
         android:icon="@drawable/ic_baseline_settings_backup_restore_24"

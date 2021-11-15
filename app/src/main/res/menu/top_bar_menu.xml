@@ -9,6 +9,12 @@
             app:showAsAction="ifRoom"/>
 
         <item
+            android:id="@+id/app_bar_navigation"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/navigation_graph"
+            app:showAsAction="ifRoom"/>
+
+        <item
             android:id="@+id/app_bar_shared_fragment"
             android:icon="@drawable/ic_baseline_photo_library_24"
             android:title="@string/test_fragment_1"
@@ -60,6 +66,12 @@
             android:id="@+id/app_bar_moxy"
             android:icon="@drawable/ic_baseline_settings_24"
             android:title="@string/moxy_example"
+            app:showAsAction="ifRoom"/>
+
+        <item
+            android:id="@+id/app_bar_scrollable"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="@string/scroll_header"
             app:showAsAction="ifRoom"/>
 
         <item

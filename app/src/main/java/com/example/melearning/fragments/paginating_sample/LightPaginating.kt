@@ -1,16 +1,15 @@
 package com.example.melearning.fragments.paginating_sample
 
 import android.view.View
-import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.melearning.FragmentManagerUtils
 import com.example.melearning.R
 import com.example.melearning.databinding.PagingFragmentBinding
 import com.example.melearning.fragments.BaseBindFragment
+import com.example.melearning.fragments.paging.PagingFragmentViewModel
 import com.example.melearning.fragments.paging.adapter.PagingAdapter
 import com.example.melearning.fragments.paging.adapter.PagingAdapterViewHolder
-import com.example.melearning.fragments.paging.PagingFragmentViewModel
 import com.example.melearning.fragments.paging.adapter.PagingPostsListener
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.melearning.fragments
+package com.example.melearning.fragments.animation
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import com.example.custom_ui.doOnEnd
 import com.example.custom_ui.startAnimationFromId
 import com.example.melearning.R
 import com.example.melearning.databinding.AnimationFragmentBinding
+import com.example.melearning.fragments.BaseBindFragment
 
 class AnimationFragment: BaseBindFragment<AnimationFragmentBinding>() {
     override fun layoutId() = R.layout.animation_fragment

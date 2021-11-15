@@ -1,5 +1,6 @@
 package com.example.melearning.fragments.calculation.history_adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -14,6 +15,7 @@ class HistoryAdapter constructor(private var mDataProvider: DataProvider,
     RecyclerView.Adapter<HistoryAdapterItem>() {
 
     private var mData = ArrayList<CalculationInfo>()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()

@@ -7,6 +7,7 @@
         <item name="bottomAppBarStyle">@style/MyBottomAppBar</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowBackground">?attr/colorPrimaryDark</item>
+        <item name="colorSurface">?attr/colorPrimary</item>
     </style>
 
     <style name="CustomAppThemeDark" parent="CustomAppThemeBase">
@@ -78,6 +79,10 @@
         <item name="android:textColor">?attr/colorAccent</item>
     </style>
 
+    <style name="Toolbar.Title" parent="TextAppearance.AppCompat.Body1">
+
+    </style>
+
     <style name="Toolbar.TitleAppearance.Expanded" parent="Toolbar.TitleAppearance">
         <item name="android:textSize">24sp</item>
     </style>
@@ -110,6 +115,9 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textAlignment">center</item>
     </style>
+
+    <!--custom bottom navigation bar style-->
+
 
     <!--custom bottom bar style-->
     <style name="MyBottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
