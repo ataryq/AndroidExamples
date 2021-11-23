@@ -1,5 +1,6 @@
 package com.example.melearning.fragments.animation
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
@@ -41,6 +42,12 @@ class AnimationFragment: BaseBindFragment<AnimationFragmentBinding>() {
                 .setInterpolator(FastOutLinearInInterpolator())
                 .setDuration(300)
                 .translationX(1000f)
+                .start()
+        }
+
+        binding.pressButton.setOnClickListener {
+            ObjectAnimator.ofFloat(it, "scaleX", 3f)
+                .setDuration(1000)
                 .start()
         }
     }

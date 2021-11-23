@@ -22,6 +22,7 @@ import com.example.melearning.fragments.SettingsFragment
 import com.example.melearning.fragments.ShimmeringExampleFragment
 import com.example.melearning.fragments.animation.AnimationFragment
 import com.example.melearning.fragments.animation.ConstraintLayoutAnimationFragment
+import com.example.melearning.fragments.animation.SceneTransitionFragment
 import com.example.melearning.fragments.bottom_shirt.BottomShirtWindowFragment
 import com.example.melearning.fragments.calculation.CalculationFragment
 import com.example.melearning.fragments.cicerone.CiceroneBaseFragment
@@ -127,7 +128,7 @@ class MainActivity : AppCompatActivity(), ActivityProvider {
                     true
                 }
                 R.id.app_bar_animation_fragment -> {
-                    showFragmentAnimated<AnimationFragment>(supportFragmentManager)
+                    showFragmentAnimated<SceneTransitionFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_rx_fragment -> {

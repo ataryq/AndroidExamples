@@ -22,7 +22,7 @@
     <string name="theme_store_key">use_dark_theme</string>
     <string name="hide">hide</string>
     <string name="show">show</string>
-    <string name="test_fragment_1">Test fragment 1</string>
+    <string name="test_fragment_1">Full paging example</string>
     <string name="photo">Photo</string>
     <string name="animation_fragment">Animation fragment</string>
     <string name="do_not_press">Do not press</string>
@@ -143,4 +143,9 @@
     <string name="go_to_rx">go to rx</string>
     <string name="back">back</string>
     <string name="up">up</string>
+    <string name="start_here">Start Here</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="username">Username</string>
+    <string name="press">press</string>
 </resources>
