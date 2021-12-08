@@ -1,4 +1,4 @@
-package com.example.melearning.examples
+package com.example.melearning.examples.coroutines
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
@@ -12,6 +12,24 @@ class Coroutines2 {
     fun run2() {
         runBlocking {
             println("Calculation result: ${structuredConcurrency()}")
+        }
+    }
+
+    suspend fun nonCancelable() {
+        coroutineScope {
+            launch(NonCancellable) {
+
+            }
+        }
+    }
+
+    private val exceptionHandler = CustomCoroutineExceptionHandler()
+
+    suspend fun launchWithHandler() {
+        coroutineScope {
+            launch(exceptionHandler.getHandler()) {
+                //some code
+            }
         }
     }
 
