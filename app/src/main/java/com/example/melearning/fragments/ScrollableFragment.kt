@@ -1,6 +1,5 @@
 package com.example.melearning.fragments
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import com.example.custom_ui.UiUtils
 import com.example.melearning.R
