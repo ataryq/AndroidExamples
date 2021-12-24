@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity(), ActivityProvider {
                     true
                 }
                 R.id.app_bar_animation_fragment -> {
-                    showFragmentAnimated<SceneTransitionFragment>(supportFragmentManager)
+                    showFragmentAnimated<AnimationFragment>(supportFragmentManager)
                     true
                 }
                 R.id.app_bar_rx_fragment -> {

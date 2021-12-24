@@ -1,6 +1,7 @@
 package com.example.melearning.fragments.animation
 
 import android.animation.ObjectAnimator
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
@@ -49,6 +50,11 @@ class AnimationFragment: BaseBindFragment<AnimationFragmentBinding>() {
             ObjectAnimator.ofFloat(it, "scaleX", 3f)
                 .setDuration(1000)
                 .start()
+        }
+
+        binding.playPauseButton.setOnClickListener {
+            val avd: AnimatedVectorDrawable = binding.playPauseButton.drawable as AnimatedVectorDrawable
+            avd.start()
         }
     }
 }
