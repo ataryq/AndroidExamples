@@ -1,6 +1,8 @@
-package com.example.melearning
+package com.example.melearning.examples
 
 import java.util.*
+
+val number: Int? = null
 
 fun main1() {
     println("Hello, world!")
@@ -60,8 +62,22 @@ fun main1() {
 
     val constName2 = name ?: "Gohan2"
     println("constName2: $constName2")
+
+    val innerClass = ClassA("Goshan").ClassInnerA().sayHello()
+    ClassA.ClassNestedA()
 }
 
 fun sum(a: Int, b: Int): Int {
     return a + b;
+}
+
+class ClassA(private val name: String) {
+
+    inner class ClassInnerA {
+        fun sayHello() = println("Hello $name")
+    }
+
+    class ClassNestedA {
+        fun sayHello() = println("Hello")
+    }
 }

@@ -1,12 +1,14 @@
-package com.example.melearning.fragments
+package com.example.melearning.fragments.storage
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import com.example.melearning.databinding.FilePickerFragmentBinding
+import com.example.melearning.fragments.BaseBindFragment2
 import java.io.FileDescriptor
 import java.io.FileInputStream
 import java.io.FileNotFoundException
@@ -18,6 +20,14 @@ class FilePickerFragment:
 
     companion object {
         const val FILE_SELECT_CODE = 1
+    }
+
+    lateinit var simpleFileBrowser: SimpleFileBrowser
+
+    override fun onAttach(context: Context) {
+        simpleFileBrowser = SimpleFileBrowser(this)
+
+        super.onAttach(context)
     }
 
     override fun initViews() {
@@ -42,11 +52,17 @@ class FilePickerFragment:
                 intent.addCategory(Intent.CATEGORY_OPENABLE)
                 intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
             }
-            startActivityForResult(intent, FILE_SELECT_CODE);
+            startActivityForResult(intent, FILE_SELECT_CODE)
+        }
+
+        binding.pickFileButton2.setOnClickListener {
+            val intent = Intent(requireContext(), CustomFileBrowser::class.java)
+            startActivityForResult(intent, FILE_SELECT_CODE)
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        println("custom_log: get some result requestCode: $requestCode resultCode: $resultCode")
         if (requestCode == FILE_SELECT_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 println("FilePickerFragment: onActivityResult: picked file: ${data?.data}")

@@ -115,6 +115,8 @@ dependencies {
     implementation "com.github.terrakok:cicerone:7.1"
     implementation "com.facebook.shimmer:shimmer:0.5.0"
     implementation "androidx.paging:paging-runtime-ktx:3.0.1"
+    implementation "com.anggrayudi:storage:0.14.0"
+
     //swipe
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 }

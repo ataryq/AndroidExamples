@@ -17,7 +17,7 @@ import com.example.melearning.R
 import com.example.melearning.databinding.ActivityMainBinding
 import com.example.melearning.di.ActivityDaggerComponent
 import com.example.melearning.di.MyViewModel
-import com.example.melearning.fragments.FilePickerFragment
+import com.example.melearning.fragments.storage.FilePickerFragment
 import com.example.melearning.fragments.ScrollableFragment
 import com.example.melearning.fragments.SettingsFragment
 import com.example.melearning.fragments.ShimmeringExampleFragment

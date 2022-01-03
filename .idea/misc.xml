@@ -9,6 +9,7 @@
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1453125" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/drawable/selectable_color.xml" value="0.28055555555555556" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout-port/percent_calculation_fragment.xml" value="0.275" />
+        <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/activity_custom_file_browser.xml" value="0.275" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/animation_fragment.xml" value="0.264" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/calculator_history_item.xml" value="0.275" />
@@ -17,6 +18,9 @@
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/constraint_anim_fragment.xml" value="0.264" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/constraint_anim_fragment_2.xml" value="0.264" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/constraint_animation_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/custom_file_browser_file.xml" value="0.275" />
+        <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/custom_file_browser_folder.xml" value="0.275" />
+        <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/custom_file_browser_item.xml" value="0.264" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/file_picker_fragment.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/fragment_scrolling.xml" value="0.24259259259259258" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/header_list_item.xml" value="0.264" />
