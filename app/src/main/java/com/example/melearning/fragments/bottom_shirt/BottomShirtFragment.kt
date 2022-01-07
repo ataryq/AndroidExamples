@@ -58,6 +58,8 @@ class BottomShirtFragment<T: ViewBinding>(val layoutId: Int):
             initHeightsByPercent(v.height)
             v.offsetTopAndBottom(heights[heightIndex])
         }
+
+//        BottomShirtBehaviour.registerCallbacks(rootView)
     }
 
     fun getY(motionEvent: MotionEvent): Int = motionEvent.rawY.toInt()

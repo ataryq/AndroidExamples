@@ -19,7 +19,7 @@ class BottomShirtWindowFragment: BaseBindFragment<PopupFragmentBinding>() {
 
     @SuppressLint("InflateParams")
     override fun onCreateViewEnd() {
-        binding.showPopupButton.setOnClickListener {
+        binding.popupContent.showPopupButton.setOnClickListener {
             val fragment = BottomShirtFragment<PopupWindowBinding>(R.layout.popup_window)
             fragment.onViewCreatedEnd {
                 fragment.layoutBinding().dismissButton.setOnClickListener {
@@ -36,7 +36,7 @@ class BottomShirtWindowFragment: BaseBindFragment<PopupFragmentBinding>() {
             })
         }
 
-        binding.writeCommentButton.setOnClickListener {
+        binding.popupContent.writeCommentButton.setOnClickListener {
             val inflater = LayoutInflater.from(activity)
             val rootView = inflater.inflate(R.layout.comment_fragment, null)
                 ?: return@setOnClickListener

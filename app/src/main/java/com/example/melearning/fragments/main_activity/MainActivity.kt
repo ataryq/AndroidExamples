@@ -17,13 +17,11 @@ import com.example.melearning.R
 import com.example.melearning.databinding.ActivityMainBinding
 import com.example.melearning.di.ActivityDaggerComponent
 import com.example.melearning.di.MyViewModel
-import com.example.melearning.fragments.storage.FilePickerFragment
 import com.example.melearning.fragments.ScrollableFragment
 import com.example.melearning.fragments.SettingsFragment
 import com.example.melearning.fragments.ShimmeringExampleFragment
 import com.example.melearning.fragments.animation.AnimationFragment
-import com.example.melearning.fragments.animation.ConstraintLayoutAnimationFragment
-import com.example.melearning.fragments.animation.SceneTransitionFragment
+import com.example.melearning.fragments.animation.CustomMotionLayout
 import com.example.melearning.fragments.bottom_shirt.BottomShirtWindowFragment
 import com.example.melearning.fragments.calculation.CalculationFragment
 import com.example.melearning.fragments.cicerone.CiceroneBaseFragment
@@ -172,7 +170,7 @@ class MainActivity : AppCompatActivity(), ActivityProvider {
                 }
 
                 R.id.app_bar_buffer -> {
-                    showFragmentAnimated<FilePickerFragment>(supportFragmentManager)
+                    showFragmentAnimated<CustomMotionLayout>(supportFragmentManager)
                     true
                 }
 

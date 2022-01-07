@@ -12,6 +12,8 @@
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/activity_custom_file_browser.xml" value="0.275" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/animation_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/bottom_sheet_example.xml" value="0.275" />
+        <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/bottom_shirt_behaviour.xml" value="0.275" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/calculator_history_item.xml" value="0.275" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/cicerone_base_fragment.xml" value="0.275" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/comment_fragment.xml" value="0.275" />
@@ -26,6 +28,7 @@
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/header_list_item.xml" value="0.264" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/home_navigate_fragment.xml" value="0.275" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/item.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/motion_layout.xml" value="0.16799999999999998" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/moxy_fragment.xml" value="0.264" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/navigate_graph_fragment.xml" value="0.2" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/nested_navigation_fragment.xml" value="0.275" />
@@ -34,6 +37,9 @@
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/paging_item_detailed_fragment.xml" value="0.275" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/paging_item_shimmering.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/popup_fragment.xml" value="0.275" />
+        <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/popup_fragment_content.xml" value="0.275" />
+        <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/popup_window.xml" value="0.275" />
+        <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/popup_window_motion_layout.xml" value="0.2" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/scene_2_transition_fragment.xml" value="0.27076923076923076" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/scene_transition_fragment.xml" value="0.2" />
         <entry key="..\:/Users/Igor/Desktop/Projects/Android/KotlinCalculator/app/src/main/res/layout/scrollable_fragment.xml" value="0.264" />

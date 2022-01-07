@@ -95,7 +95,7 @@ class FragmentManagerUtils {
         inline fun addFragment(
             fragmentManager: FragmentManager,
             fragment: Fragment,
-            callInTransaction: FragmentTransaction.() -> Unit,
+            callInTransaction: FragmentTransaction.() -> Unit = {},
             container: Int = R.id.fragment_container_view)
         {
             if(checkFragmentIsAlreadyAdded(fragmentManager, fragment)) {

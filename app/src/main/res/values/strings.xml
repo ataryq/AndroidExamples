@@ -149,4 +149,5 @@
     <string name="username">Username</string>
     <string name="press">press</string>
     <string name="pick_up_file">Pick up file</string>
+    <string name="title">Title</string>
 </resources>
