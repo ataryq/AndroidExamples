@@ -1,4 +1,4 @@
-package com.example.melearning.examples
+package com.example.melearning.examples.flow
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow

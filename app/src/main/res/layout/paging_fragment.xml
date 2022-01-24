@@ -41,7 +41,7 @@
                 </LinearLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.example.melearning.fragments.paginating_sample.CustomRecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

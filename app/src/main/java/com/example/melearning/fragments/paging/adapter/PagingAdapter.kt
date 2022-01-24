@@ -2,6 +2,7 @@ package com.example.melearning.fragments.paging.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.doOnPreDraw
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.melearning.R
@@ -29,6 +30,9 @@ class PagingAdapter(private val listener: PagingPostsListener):
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingAdapterViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.paging_item, parent, false)
+        view.doOnPreDraw {
+            println("PagingAdapter: onCreateViewHolder: doOnPreDraw")
+        }
         return PagingAdapterViewHolder(view)
     }
 }

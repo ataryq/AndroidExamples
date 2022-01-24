@@ -23,8 +23,7 @@
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/nenechi"
-        android:contentDescription="@con" />
+        app:srcCompat="@drawable/nenechi" />
 
     <Button
         android:id="@+id/button4"

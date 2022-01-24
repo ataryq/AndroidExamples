@@ -4,7 +4,21 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 
 fun main() { // this: CoroutineScope
-    Coroutines2().asynchronousRunning()
+//    Coroutines2().asynchronousRunning()
+    runCoroutinesSequentially()
+}
+
+fun runCoroutinesSequentially() {
+    CoroutineScope(Dispatchers.IO).launch {
+        delay(100)
+        println("1")
+        withContext(Dispatchers.Default) {
+            delay(100)
+            println("2")
+        }
+        println("3")
+    }
+    Thread.sleep(500)
 }
 
 class Coroutines2 {
