@@ -19,17 +19,61 @@ fun startKotlinFlowTests() = CoroutineScope(Dispatchers.Default).launch {
     println("time: $time")
 }
 
-//locking the thread
-suspend fun channels() = CoroutineScope(Dispatchers.Default).launch {
-    val channel = Channel<Int>(3)
+fun channelExample() = runBlocking {
+    val channel = Channel<Int>(4) // create buffered channel
+
     launch {
-        repeat(5) {channel.send(it)}
+        for (i in 0 .. 6) channel.send(i)
+        channel.close()
     }
 
-    channel.receiveAsFlow().collect { println(it) }
-//
-//
+    delay(100)
+
+    for(i in channel) println(i)
 }
+
+fun stateFlowExample() = runBlocking {
+    val stateFlow = MutableStateFlow(0)
+
+    stateFlow.emit(1)
+
+    val job = launch {
+        stateFlow.collect {
+            println("stateFlow: $it")
+        }
+    }
+
+    delay(50)
+
+    stateFlow.emit(2)
+
+    delay(50)
+
+    job.cancel()
+}
+
+fun sharedFlowsExample() {
+    println("flowsExample")
+
+    val sharedFlow = MutableSharedFlow<Int>()
+
+    runBlocking {
+        val job = launch {
+            sharedFlow.collectLatest {
+                println(it)
+            }
+        }
+
+        sharedFlow.emit(0)
+
+        delay(100)
+
+        sharedFlow.emit(1)
+
+        job.cancel()
+    }
+}
+
 
 suspend fun simpleFlow() {
     val numberStrings = flowOf("first", "second", "third", "fourth", "fifth")
