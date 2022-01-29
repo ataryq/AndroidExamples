@@ -1,11 +1,16 @@
-# KotlinCalculator
+# AndroidExamples
 
-Here you can see my calculator for calculatoin dificult percent.
-The desing was implemented via Flatter and was made according to Matreail Design rules.
+Lots of examples and solutions for diffrent tasks.
 
-Used technologies: Kotlin, Room, RecyleView, BottomNavigationView, Binding view, Live data, Coroutines.
+Used technologies: 
+language: Kotlin, Java;
+database: Room;
+network: Retrofit;
+android views: RecyleView, BottomNavigationView, Binding view, paginating, custom view, bottom shirt;
+reactive components: JavaRx, RxBinding, Live data;
+multithreading: Kotlin Flow (Shared, State, Flow), Coroutines;
+navigation: jetpack navigation, Cicerone;
+dependency injection: Koin, Dagger;
+animations: Motion layout, morph, shared transaction, shimmering effect; 
+image: Glide, Picaso.
 
-Also I added lots of examples for diffrent technologies: shared transaction, paginating, shimmering effect, Dagger, Retrofit, Cicerone, JavaRx, Kotlin Flow, animations, custom xml elements, custom bottom shirt, Koin, Glide, Picaso.
-
-![history](screenshots/history.jpg)
-![main_screen](screenshots/main_screen.jpg)
