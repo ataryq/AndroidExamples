@@ -34,6 +34,7 @@ class RxBindingActivity : AppCompatActivity() {
     private fun flowBinding() {
         setContentView(R.layout.activity_binding_view)
 
+        
         val button: Button = findViewById(R.id.button)
         val button2: Button = findViewById(R.id.button2)
         val counter: TextView = findViewById(R.id.counter)
