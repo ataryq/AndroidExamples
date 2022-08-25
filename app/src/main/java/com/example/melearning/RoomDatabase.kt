@@ -1,11 +1,14 @@
 package com.example.melearning
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.migration.DisableInstallInCheck
 import io.reactivex.Flowable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +26,10 @@ interface DataProvider {
 }
 
 @Module
-class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvider {
+@DisableInstallInCheck
+class CalculationHistoryDb(context:Context,
+                           dbName: String = DbName,
+                           inMemory: Boolean = false): DataProvider {
     companion object {
         const val HistoryTableName = "CalculationHistory"
         const val DbName = "PercentCalculator"
@@ -37,9 +43,14 @@ class CalculationHistoryDb(context:Context, dbName: String = DbName): DataProvid
     private val mOperationInProgress = MutableLiveData(false)
 
     init {
-        mDb = Room.databaseBuilder(context,
-            CalculationHistoryDatabase::class.java,
-            dbName).build()
+        mDb = if(inMemory) {
+            Room.inMemoryDatabaseBuilder(context,
+                CalculationHistoryDatabase::class.java).build()
+        } else {
+            Room.databaseBuilder(context,
+                CalculationHistoryDatabase::class.java,
+                dbName).build()
+        }
         getDatabaseHandler().getAll().observeForever {
             mOperationInProgress.postValue(false)
         }

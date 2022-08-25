@@ -55,6 +55,7 @@ class CalculationViewModel(application: Application):
     }
 
     fun saveCalculationToHistory() {
+        println("my_saveCalculationToHistory")
         mDb?.insertAll(getCalculationInfo())
     }
 

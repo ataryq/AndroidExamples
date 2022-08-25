@@ -24,7 +24,8 @@ import javax.inject.Inject
 class CalculationFragment: Fragment(), HistoryItemListener {
     @Inject lateinit var mDb: DataProvider
     @Inject lateinit var mActivity: AppCompatActivity
-    private val mViewModel: CalculationViewModel by activityViewModels()
+    @Suppress("MemberVisibilityCanBePrivate")
+    val mViewModel: CalculationViewModel by activityViewModels()
     private val mActivityViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var mBinding: PercentCalculationFragmentBinding
     private val mEditTextWrappers = ArrayList<CustomEditTextWrapper>()
@@ -80,7 +81,10 @@ class CalculationFragment: Fragment(), HistoryItemListener {
     }
 
     private fun initBottomActionBar() {
+        println("my_initBottomActionBar")
+
         mBinding.saveResultButton.setOnClickListener {
+            println("saveResultButton_click")
             if(!mIsBottomAppBarHidden)
                 mViewModel.saveCalculationToHistory()
             else {

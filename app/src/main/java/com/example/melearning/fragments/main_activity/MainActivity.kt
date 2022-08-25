@@ -32,10 +32,12 @@ import com.example.melearning.fragments.paging.view.PagingFragment
 import com.example.melearning.fragments.rx_fragment.RxFragment
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.migration.DisableInstallInCheck
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
 @Module
+@DisableInstallInCheck
 class MainActivity : AppCompatActivity(), ActivityProvider {
     @Provides fun providerActivity() = this as AppCompatActivity
     @Provides fun providerContext(): Context = applicationContext

@@ -7,9 +7,11 @@ import com.example.melearning.DataProvider
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.migration.DisableInstallInCheck
 import javax.inject.Singleton
 
 @Module
+@DisableInstallInCheck
 class ApplicationModule(private val appContext: Context) {
     @Provides
     fun provideContext() = appContext

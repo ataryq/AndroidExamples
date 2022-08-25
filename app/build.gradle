@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 31
@@ -39,9 +40,17 @@ android {
         viewBinding = true
         dataBinding = true
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
+    def fragment_version = "1.3.2"
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
@@ -54,12 +63,8 @@ dependencies {
     implementation project(path: ':custom_ui')
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.0-beta02'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.0-beta02'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation 'androidx.fragment:fragment-ktx:1.3.2'
-    //noinspection KtxExtensionAvailable
-    implementation 'androidx.fragment:fragment:1.3.2'
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation 'androidx.preference:preference-ktx:1.1.1'
     implementation "com.github.bumptech.glide:glide:4.12.0"
 //    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
@@ -72,11 +77,14 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
 
-    def dagger_version = "2.33"
+    //dagger
     implementation "com.google.dagger:dagger:$dagger_version"
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    implementation "com.google.dagger:hilt-android:$dagger_version"
+    kapt "com.google.dagger:hilt-compiler:$dagger_version"
+    kapt "com.google.dagger:hilt-android-compiler:$dagger_version"
 
     def koin_version = "2.2.3"
     implementation "io.insert-koin:koin-android:$koin_version"
@@ -106,12 +114,6 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
 
-    // Moxy
-    def moxy_versions = "2.2.2"
-    implementation "com.github.moxy-community:moxy:$moxy_versions"
-    implementation "com.github.moxy-community:moxy-androidx:$moxy_versions"
-    kapt "com.github.moxy-community:moxy-compiler:$moxy_versions"
-
     //others
     implementation "com.github.terrakok:cicerone:7.1"
     implementation "com.facebook.shimmer:shimmer:0.5.0"
@@ -121,6 +123,12 @@ dependencies {
     //swipe
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 
+    //moxy
+    def moxy_versions = "2.2.2"
+    implementation "com.github.moxy-community:moxy:$moxy_versions"
+    implementation "com.github.moxy-community:moxy-androidx:$moxy_versions"
+    kapt "com.github.moxy-community:moxy-compiler:$moxy_versions"
+
     //flow binding
     def flow_binding_version = "1.2.0"
     implementation "io.github.reactivecircus.flowbinding:flowbinding-android:${flow_binding_version}"
@@ -129,4 +137,29 @@ dependencies {
 //    implementation "io.github.reactivecircus.flowbinding:flowbinding-core:${flow_binding_version}"
 //    implementation "io.github.reactivecircus.flowbinding:flowbinding-drawerlayout:${flow_binding_version}"
 //    implementation "io.github.reactivecircus.flowbinding:flowbinding-lifecycle:${flow_binding_version}"
+
+    //tests
+
+    implementation 'junit:junit:4.13.2'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test-jvm:1.6.4'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test:rules:1.4.0'
+
+    //mockito
+    testImplementation 'org.mockito:mockito-core:4.7.0'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
+    testImplementation 'org.mockito:mockito-inline:2.21.0'
+    androidTestImplementation 'org.mockito:mockito-android:4.7.0'
+    androidTestImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
+
+    //testing espresso
+    def espresso_version = "3.3.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 }

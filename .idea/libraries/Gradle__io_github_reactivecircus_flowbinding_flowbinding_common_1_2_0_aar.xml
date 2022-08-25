@@ -1,9 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: io.github.reactivecircus.flowbinding:flowbinding-common:1.2.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/06f5aade0072c6c50d2639f94d3e213c/jetified-flowbinding-common-1.2.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/06f5aade0072c6c50d2639f94d3e213c/jetified-flowbinding-common-1.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/06f5aade0072c6c50d2639f94d3e213c/jetified-flowbinding-common-1.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6160e9eabcebe3a17e21198cb8cead39/jetified-flowbinding-common-1.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6160e9eabcebe3a17e21198cb8cead39/jetified-flowbinding-common-1.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6160e9eabcebe3a17e21198cb8cead39/jetified-flowbinding-common-1.2.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.reactivecircus.flowbinding/flowbinding-common/1.2.0/5675fa7acf1cc4f17d67a4e06bd37a7ec1e443de/flowbinding-common-1.2.0-javadoc.jar!/" />
